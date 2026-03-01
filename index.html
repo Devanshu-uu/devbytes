@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devanshu | DEVBYTES</title>
+
+    <meta name="description" content="Devanshu | DEVBYTES - Web Developer, Data Analyst, and Content Creator.">
+    <meta name="keywords" content="Devanshu, DEVBYTES, Web Developer, Data Analyst, Portfolio">
+    <meta name="author" content="Devanshu">
+
+    <!-- FAVICON / SITE LOGO -->
+    <link rel="icon" href="img/logo.png?v=1" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --primary: #FF0000;
+            --glass: rgba(255, 255, 255, 0.05);
+            --bg-card: #141414;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .fixed-parallax-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; display: flex; justify-content: center; align-items: center;
+            background: black;
+        }
+
+        .fixed-parallax-bg img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: blur(4px) brightness(0.6);
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed; top: 0; width: 100%; height: 75px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        /* SHRINK NAVBAR ON SCROLL */
+        nav.shrink {
+            height: 60px;
+            background: rgba(0,0,0,0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .logo-dev {
+            font-family: 'Syncopate'; font-size: 1.4rem;
+            color: transparent; -webkit-text-stroke: 1.5px var(--primary);
+        }
+        .logo-teck { font-family: 'Syncopate'; color: white; font-size: 1.4rem; }
+
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: white; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: white; z-index: 1001; }
+
+        @media (max-width: 992px) {
+            .hamburger { display: block; }
+            .nav-links {
+                position: fixed; top: 75px; right: -100%; width: 100%; height: calc(100vh - 75px);
+                background: rgba(10, 10, 10, 0.98); flex-direction: column;
+                align-items: center; padding-top: 50px; transition: var(--transition);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 15px 0; }
+        }
+
+        .section-padding { padding: 100px 8%; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 45px; }
+        .section-title span { color: var(--primary); }
+
+      /* ================= HERO SECTION ================= */
+
+.hero {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero h1 { 
+    font-size: clamp(2.8rem, 10vw, 5.5rem); 
+    font-weight: 800; 
+}
+
+.hero h1 span { 
+    color: var(--primary); 
+}
+
+.hero p { 
+    color: #ccc; 
+    margin: 20px 0; 
+    max-width: 550px; 
+}
+
+.hero p span.glow {
+    transition: 0.3s;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn { 
+    padding: 12px 30px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    display: inline-block; 
+    transition: 0.3s; 
+}
+
+.btn-red { 
+    background: var(--primary); 
+    color: white; 
+    border: 1px solid var(--primary); 
+}
+
+.btn-outline { 
+    border: 1px solid white; 
+    color: white; 
+    margin-left: 10px; 
+}
+
+/* ================= MUSIC PLAYER ================= */
+
+.music-player {
+    margin-top: 100px;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .music-player {
+        margin-top: 70px;
+        max-width: 95%;
+    }
+}
+        .content-wrapper { position: relative; z-index: 10; background: var(--bg-dark); box-shadow: 0 -30px 60px rgba(0,0,0,0.9); }
+
+        /* SKILLS BARS */
+        .skill-bar-container { background: #222; height: 8px; border-radius: 5px; margin-bottom: 15px; width: 100%; }
+        .skill-progress { background: var(--primary); height: 100%; border-radius: 5px; }
+
+        /* CERTIFICATES SLIDER */
+        .cert-slider { width: 100%; overflow: hidden; padding: 20px 0; position: relative; }
+        .scroll-wrapper { display: flex; width: max-content; animation: scroll-left 30s linear infinite; }
+        .cert-item { width: 350px; margin: 0 15px; border-radius: 12px; overflow: hidden; border: 1px solid var(--glass); cursor: pointer; transition: 0.3s; }
+        .cert-item:hover { border-color: var(--primary); transform: scale(1.03); }
+        .cert-item img { width: 100%; display: block; pointer-events: none; }
+
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); display: none; justify-content: center;
+            align-items: center; z-index: 3000;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 80vh; border: 2px solid var(--primary); border-radius: 10px; box-shadow: 0 0 30px rgba(255,0,0,0.2); }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; color: white; font-size: 3rem; cursor: pointer; }
+
+        /* SOCIALS & PROJECTS GRID */
+        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .social-card { background: var(--bg-card); padding: 35px; border-radius: 12px; text-align: center; border: 1px solid var(--glass); text-decoration: none; color: white; transition: 0.3s; }
+        .social-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .social-card i { font-size: 2rem; color: var(--primary); margin-bottom: 12px; display: block; }
+
+        /* YOUTUBE */
+        .video-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--glass); }
+        .video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+        #youtube-feed { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+        /* CONTACT */
+        .contact-box { max-width: 750px; margin: 0 auto; background: #111; padding: 45px; border-radius: 18px; border: 1px solid var(--glass); }
+        .form-group { margin-bottom: 18px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: #999; font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 14px; background: #000; border: 1px solid var(--glass); color: white; border-radius: 8px; outline: none; }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid var(--glass); color: #555; }
+
+        /* ORIGINAL COLORFUL ICONS */
+        .social-card i.fab.fa-github { color: #333; }
+        .social-card i.fab.fa-linkedin { color: #0077b5; }
+        .social-card i.fab.fa-stack-overflow { color: #f48024; }
+        .social-card i.fab.fa-twitter { color: #1da1f2; }
+        .social-card i.fab.fa-instagram { color: #e1306c; }
+        .social-card i.fab.fa-facebook { color: #1877f2; }
+        .social-card i.fab.fa-telegram { color: #0088cc; }
+        .social-card i.fab.fa-discord { color: #5865f2; }
+        .social-card i.fab.fa-snapchat { color: #fffc00; }
+        .social-card i.fab.fa-reddit { color: #ff4500; }
+        .social-card i.fab.fa-pinterest { color: #e60023; }
+
+        /* FLOATING MUSIC PLAYER (BENTO STYLE) */
+.music-pill {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,0,0,0.3);
+    padding: 12px 18px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    box-shadow: 0 0 25px rgba(255,0,0,0.4);
+    transition: 0.3s ease;
+}
+
+.music-pill:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(255,0,0,0.7);
+}
+
+.music-btn {
+    background: var(--primary);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.music-info {
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.music-playing {
+    animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
+    50% { box-shadow: 0 0 30px rgba(255,0,0,1); }
+    100% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
+}
+
+.music-player {
+    width: 100%;
+    max-width: 350px;
+    background: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: white;
+}
+
+.player-top { display: flex; align-items: center; gap: 15px; }
+
+#songCover { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
+
+.song-info { flex: 1; text-align: left; }
+.song-info h3 { font-size: 16px; margin: 0; font-weight: 600; }
+.song-info p { font-size: 13px; color: #b3b3b3; margin-top: 2px; }
+
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #FF0000; /* Your primary red */
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.controls { display: flex; justify-content: center; align-items: center; gap: 30px; }
+.controls button { background: none; border: none; color: white; font-size: 18px; cursor: pointer; transition: 0.2s; }
+.controls button:hover { transform: scale(1.1); }
+
+#playBtn { 
+    background: white; 
+    color: black; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+    </style>
+</head>
+<body>
+
+    <div class="fixed-parallax-bg">
+        <img src="img/hero.png" alt="Devanshu">
+    </div>
+
+    <nav>
+        <div>
+            <span class="logo-dev">DEV</span><span class="logo-teck">BYTES</span>
+        </div>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#youtube">YouTube</a></li>
+            <li><a href="#socials">Socials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>HI, I'M <span>DEVANSHU</span></h1>
+        <p>Code Worm | Content Creator | Tech Enthusiast</p>
+        <div>
+            <a href="#socials" class="btn btn-red">My Socials</a>
+            <a href="#contact" class="btn btn-outline">Connect</a>
+            <br><br>
+            <a href="resume.pdf" class="btn btn-red" download>Download Resume</a>
+        </div>
+        <br><br><br>
+
+<h3 style="margin-top:40px; font-weight:600; color:#ccc; letter-spacing:1px;">
+    ❤️ Loved Songs
+</h3>
+
+<div class="music-player">
+    <div class="player-top">
+        <img id="songCover" src="img/img1.jpg" alt="cover">
+        <div class="song-info">
+            <h3 id="songTitle">Loading...</h3>
+            <p id="songArtist">Devanshu</p>
+        </div>
+    </div>
+
+    <div class="progress-area">
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
+        <button id="playBtn" class="play-pause">
+            <i class="fas fa-play" id="playIcon"></i>
+        </button>
+        <button id="nextBtn"><i class="fas fa-step-forward"></i></button>
+    </div>
+
+    <audio id="musicPlayer"></audio>
+</div>
+
+        
+    </section>
+    <div class="content-wrapper">
+    <section class="section-padding" id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div style="max-width:800px;margin:auto;text-align:center;color:#ccc;">
+            <p>I'm Devanshu, passionate about Web Development, Data Science & AI. I build digital projects and share tech content on YouTube.</p>
+        </div>
+    </section>
+
+    <section class="section-padding" id="skills" style="background:#080808;">
+        <h2 class="section-title">Technical <span>Skills</span></h2>
+        <div style="max-width:700px;margin:auto;color:#ccc;">
+            <p>Python</p>
+            <div class="skill-bar-container"><div class="skill-progress" style="width:90%;"></div></div>
+            <p>HTML / CSS</p>
+            <div class="skill-bar-container"><div class="skill-progress" style="width:85%;"></div></div>
+            <p>JavaScript</p>
+            <div class="skill-bar-container"><div class="skill-progress" style="width:75%;"></div></div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="certificates">
+        <h2 class="section-title">My <span>Certificates</span></h2>
+        <div class="cert-slider">
+            <div class="scroll-wrapper" id="certWrapper">
+                <div class="cert-item" onclick="openLightbox(this)"><img src="img/1111.jpg"></div>
+                <div class="cert-item" onclick="openLightbox(this)"><img src="img/11112.jpg"></div>
+                <div class="cert-item" onclick="openLightbox(this)"><img src="img/python_page-0001.jpg"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="projects" style="background:#080808;">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <div class="social-grid">
+            <div class="social-card"><h3>Portfolio Website</h3><p>Modern responsive site.</p></div>
+            <div class="social-card"><h3>Data Analysis Project</h3><p>Python & Pandas dataset work.</p></div>
+            <div class="social-card"><h3>YouTube Automation</h3><p>API integration project.</p></div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="youtube">
+        <h2 class="section-title">My <span>YouTube</span> Channel</h2>
+        <div style="text-align:center;margin-bottom:30px;">
+            <a href="https://youtube.com/@YOURCHANNEL" target="_blank" class="btn btn-red">Subscribe on YouTube</a>
+        </div>
+        <div id="youtube-feed"></div>
+    </section>
+
+    <section class="section-padding" id="socials" style="background:#080808;">
+        <h2 class="section-title">Connect <span>With Me</span></h2>
+        <div class="social-grid">
+            <a href="#" class="social-card" title="Instagram"><i class="fab fa-instagram"></i><h3>Instagram</h3></a>
+            <a href="#" class="social-card" title="GitHub"><i class="fab fa-github"></i><h3>GitHub</h3></a>
+            <a href="#" class="social-card" title="LinkedIn"><i class="fab fa-linkedin"></i><h3>LinkedIn</h3></a>
+            <a href="#" class="social-card" title="Discord"><i class="fab fa-discord"></i><h3>Discord</h3></a>
+            <a href="#" class="social-card" title="Twitter"><i class="fab fa-twitter"></i><h3>Twitter (X)</h3></a>
+            <a href="#" class="social-card" title="Snapchat"><i class="fab fa-snapchat"></i><h3>Snapchat</h3></a>
+            <a href="#" class="social-card" title="Telegram"><i class="fab fa-telegram"></i><h3>Telegram</h3></a>
+            <a href="#" class="social-card" title="Facebook"><i class="fab fa-facebook"></i><h3>Facebook</h3></a>
+            <a href="#" class="social-card" title="Pinterest"><i class="fab fa-pinterest"></i><h3>Pinterest</h3></a>
+            <a href="#" class="social-card" title="Reddit"><i class="fab fa-reddit"></i><h3>Reddit</h3></a>
+        </div>
+    </section>
+
+    <section class="section-padding" id="contact">
+        <div class="contact-box">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <form>
+                <div class="form-group"><label>Name</label><input type="text" required></div>
+                <div class="form-group"><label>Email</label><input type="email" required></div>
+                <div class="form-group"><label>Message</label><textarea rows="5" required></textarea></div>
+                <button type="submit" class="btn btn-red" style="width:100%;border:none;cursor:pointer;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Devanshu | DEVBYTES</p>
+        <div style="margin-top:10px;">
+            <a href="#home" style="color:#ccc;margin:0 10px;">Home</a>
+            <a href="#about" style="color:#ccc;margin:0 10px;">About</a>
+            <a href="#projects" style="color:#ccc;margin:0 10px;">Projects</a>
+            <a href="#contact" style="color:#ccc;margin:0 10px;">Contact</a>
+        </div>
+    </footer>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
+
+<!-- PARTICLES JS -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("body", {
+  "particles": {
+    "number": {"value": 60},
+    "color": {"value": ["#ff0000","#00ff00","#0000ff"]},
+    "shape": {"type": "circle"},
+    "opacity": {"value": 0.5},
+    "size": {"value": 3},
+    "line_linked": {"enable": true,"distance": 150,"color": "#fff","opacity":0.2,"width":1},
+    "move": {"enable": true,"speed": 2}
+  },
+  "interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": true,"mode": "repulse"}}}
+});
+</script>
+
+<script>
+    // HAMBURGER
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('active')));
+
+    // SHRINK NAVBAR LOGIC
+    window.addEventListener("scroll", function() {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 50) {
+            navbar.classList.add("shrink");
+        } else {
+            navbar.classList.remove("shrink");
+        }
+    });
+
+    // CERTIFICATE SLIDER (Double images for infinite scroll)
+    const wrapper = document.getElementById('certWrapper');
+    wrapper.innerHTML += wrapper.innerHTML;
+
+    // LIGHTBOX LOGIC
+    function openLightbox(item) {
+        const imgSrc = item.querySelector('img').src;
+        document.getElementById('lightbox-img').src = imgSrc;
+        document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // YOUTUBE
+    const CHANNEL_ID = 'UC24ZXuLKFu0ZMXOsSNL_qTQ';
+    async function fetchYT() {
+        const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID)}`;
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            const feed = document.getElementById('youtube-feed');
+            if (data.status === 'ok') {
+                feed.innerHTML = '';
+                data.items.slice(0, 3).forEach(v => {
+                    const id = v.guid.split(':').pop();
+                    feed.innerHTML += `<div class="video-card"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe></div>`;
+                });
+            }
+        } catch (e) { console.log(e); }
+    }
+    fetchYT();
+
+    // TYPING ANIMATION WITH GLOW
+    const heroText = document.querySelector('.hero p');
+    const roles = ["Code Worm", "AI Enthusiast", "YouTuber"];
+    const colors = ["#ff0000", "#00ff00", "#0000ff"]; // Glow colors for each role
+    let i = 0, j = 0;
+
+    function type() {
+        if(j < roles[i].length){
+            heroText.innerHTML = `<span class="glow" style="text-shadow: 0 0 8px ${colors[i]},0 0 12px ${colors[i]},0 0 16px ${colors[i]}">${roles[i].slice(0,j+1)}</span>`;
+            j++;
+            setTimeout(type, 150);
+        } else {
+            setTimeout(()=>{ erase() }, 1000);
+        }
+    }
+
+    function erase() {
+        if(j >= 0){
+            heroText.innerHTML = `<span class="glow" style="text-shadow: 0 0 8px ${colors[i]},0 0 12px ${colors[i]},0 0 16px ${colors[i]}">${roles[i].slice(0,j)}</span>`;
+            j--;
+            setTimeout(erase, 80);
+        } else {
+            i = (i+1) % roles.length;
+            setTimeout(type, 500);
+        }
+    }
+
+    type();
+
+    // DYNAMIC YEAR
+    document.getElementById('year').textContent = new Date().getFullYear();
+    let songs = [];
+let currentSongIndex = 0;
+
+const audioPlayer = document.getElementById("musicPlayer");
+const playBtn = document.getElementById("playBtn");
+const playIcon = document.getElementById("playIcon");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const progressBar = document.getElementById("progressBar");
+const progressContainer = document.getElementById("progressContainer");
+
+const songTitle = document.getElementById("songTitle");
+const songArtist = document.getElementById("songArtist");
+const songCover = document.getElementById("songCover");
+
+// Load songs from your JSON file
+fetch("songs.json")
+    .then(res => res.json())
+    .then(data => {
+        songs = data;
+        loadSong(currentSongIndex);
+    })
+    .catch(err => {
+        // Fallback if JSON fails
+        songs = [{ title: "song1", artist: "Devanshu", cover: "img/img1.jpg", src: "music/song1.mp3" }];
+        loadSong(0);
+    });
+
+function loadSong(index) {
+    const song = songs[index];
+    songTitle.textContent = song.title;
+    songArtist.textContent = song.artist;
+    songCover.src = song.cover;
+    audioPlayer.src = song.src;
+}
+
+// Play/Pause Logic
+playBtn.addEventListener("click", () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playIcon.className = "fas fa-pause";
+    } else {
+        audioPlayer.pause();
+        playIcon.className = "fas fa-play";
+    }
+});
+
+// Next/Prev Logic
+nextBtn.addEventListener("click", () => {
+    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    loadSong(currentSongIndex);
+    audioPlayer.play();
+    playIcon.className = "fas fa-pause";
+});
+
+prevBtn.addEventListener("click", () => {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    loadSong(currentSongIndex);
+    audioPlayer.play();
+    playIcon.className = "fas fa-pause";
+});
+
+// Progress Bar update
+audioPlayer.addEventListener("timeupdate", () => {
+    const { duration, currentTime } = audioPlayer;
+    const progressPercent = (currentTime / duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+});
+
+// Click on progress bar to seek
+progressContainer.addEventListener("click", (e) => {
+    const width = progressContainer.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audioPlayer.duration;
+    audioPlayer.currentTime = (clickX / width) * duration;
+});
+
+// Auto-play next song
+audioPlayer.addEventListener("ended", () => nextBtn.click());
+</script>
+
+
+
+
+
+
+

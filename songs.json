@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Ye Tune Kya Kiya",
+    "artist": "Pritam, Javed Bashir",
+    "src": "music/song1.mp3",
+    "cover": "img/song1.jpg"
+  },
+  {
+    "title": "Dhoonde Akhiyaan",
+    "artist": "Altamash Faridi and Yasser Desai",
+    "src": "music/song2.mp3",
+    "cover": "img/song2.jpg"
+  },
+
+   {
+    "title": "In Dino",
+    "artist": "Pritam, Soham, Sayeed Quadri",
+    "src": "music/song3.mp3",
+    "cover": "img/song3.jpg"
+  }
+
+]
