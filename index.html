@@ -90,36 +90,15 @@
 
       /* ================= HERO SECTION ================= */
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* This centers everything vertically */
-    align-items: center;    /* This centers everything horizontally */
-    text-align: center;
-    position: relative;
-    padding: 100px 20px 50px 20px;
-}
-
-.hero h1 { 
-    font-size: clamp(2.8rem, 10vw, 5.5rem); 
-    font-weight: 800;
-    margin-bottom: 10px; /* Space between name and description */
-}
-
-.hero h1 span { 
-    color: var(--primary); 
-}
-
-.hero p { 
-    color: #ccc; 
-    margin: 20px 0; 
-    max-width: 550px; 
-}
-
-.hero p span.glow {
+      /* HERO */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        .hero h1 { font-size: clamp(2.8rem, 10vw, 5.5rem); font-weight: 800; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { color: #ccc; margin: 20px 0; max-width: 550px; }
+        .hero p span.glow {
     transition: 0.3s;
 }
+
 
 
 /* ================= BUTTONS ================= */
@@ -663,6 +642,7 @@ progressContainer.addEventListener("click", (e) => {
 // Auto-play next song
 audioPlayer.addEventListener("ended", () => nextBtn.click());
 </script>
+
 
 
 
