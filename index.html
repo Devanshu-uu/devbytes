@@ -91,11 +91,14 @@
       /* ================= HERO SECTION ================= */
 
 .hero {
-    height: 100vh;
-    display: grid;
-    place-items: center;
+    min-height: 100vh; /* Changed from height to min-height */
+    display: flex;     /* Flex is often more reliable for stacking vertical content */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     position: relative;
+    padding: 120px 20px 60px 20px; /* Added padding so content doesn't hide under the navbar */
 }
 
 .hero h1 { 
@@ -652,6 +655,7 @@ progressContainer.addEventListener("click", (e) => {
 // Auto-play next song
 audioPlayer.addEventListener("ended", () => nextBtn.click());
 </script>
+
 
 
 
