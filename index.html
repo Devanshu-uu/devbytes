@@ -548,11 +548,12 @@ const songCover = document.getElementById("songCover");
 fetch("music/songs.json")
     .then(res => res.json())
     .then(data => {
+        console.log("Songs Loaded:", data); // <--- check in browser console
         songs = data;
         loadSong(currentSongIndex);
     })
     .catch(err => {
-        // Fallback if JSON fails
+        console.error("JSON Load Failed:", err);
         songs = [{ title: "song1", artist: "Devanshu", cover: "img/img1.jpg", src: "music/song1.mp3" }];
         loadSong(0);
     });
@@ -609,3 +610,4 @@ progressContainer.addEventListener("click", (e) => {
 // Auto-play next song
 audioPlayer.addEventListener("ended", () => nextBtn.click());
 </script>
+
