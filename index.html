@@ -382,7 +382,7 @@
         let songs = [];
         let currentIdx = 0;
 
-        fetch("songs.json").then(r => r.json()).then(data => {
+        fetch("music/songs.json").then(r => r.json()).then(data => {
             songs = data;
             loadSong(0);
         }).catch(() => {
@@ -410,3 +410,4 @@
     </script>
 </body>
 </html>
+
