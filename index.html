@@ -545,7 +545,7 @@ const songArtist = document.getElementById("songArtist");
 const songCover = document.getElementById("songCover");
 
 // Load songs from your JSON file
-fetch("music/songs.json")
+fetch("songs.json")
     .then(res => res.json())
     .then(data => {
         console.log("Songs Loaded:", data); // <--- check in browser console
@@ -610,4 +610,5 @@ progressContainer.addEventListener("click", (e) => {
 // Auto-play next song
 audioPlayer.addEventListener("ended", () => nextBtn.click());
 </script>
+
 
