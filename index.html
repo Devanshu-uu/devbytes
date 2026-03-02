@@ -88,84 +88,28 @@
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 45px; }
         .section-title span { color: var(--primary); }
 
-      /* ================= HERO SECTION ================= */
-
-      .hero {
-    min-height: 100vh;
+        /* HERO */
+        .hero {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* This centers everything vertically */
-    align-items: center;    /* This centers everything horizontally */
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    height: 100vh;
     position: relative;
-    padding: 100px 20px 50px 20px;
+    padding-bottom: 100px; /* optional extra spacing */
 }
-
-.hero h1 { 
-    font-size: clamp(2.8rem, 10vw, 5.5rem); 
-    font-weight: 800;
-    margin-bottom: 10px; /* Space between name and description */
-}
-
-.hero h1 span { 
-    color: var(--primary); 
-}
-
-.hero p { 
-    color: #ccc; 
-    margin: 20px 0; 
-    max-width: 550px;
-    align-items: center;    /* This centers everything horizontally */
-    text-align: center;
-    
-}
-
-.hero p span.glow {
+        .hero h1 { font-size: clamp(2.8rem, 10vw, 5.5rem); font-weight: 800; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { color: #ccc; margin: 20px 0; max-width: 550px; }
+        .hero p span.glow {
     transition: 0.3s;
 }
 
+        .btn { padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
+        .btn-red { background: var(--primary); color: white; border: 1px solid var(--primary); }
+        .btn-outline { border: 1px solid white; color: white; margin-left: 10px; }
 
-
-/* ================= BUTTONS ================= */
-
-.btn { 
-    padding: 12px 30px; 
-    border-radius: 5px; 
-    text-decoration: none; 
-    font-weight: 600; 
-    display: inline-block; 
-    transition: 0.3s; 
-}
-
-.btn-red { 
-    background: var(--primary); 
-    color: white; 
-    border: 1px solid var(--primary); 
-}
-
-.btn-outline { 
-    border: 1px solid white; 
-    color: white; 
-    margin-left: 10px; 
-}
-
-/* ================= MUSIC PLAYER ================= */
-
-.music-player {
-    margin-top: 30px; 
-    width: 100%;
-    max-width: 380px;
-}
-/* Music Player - Mobile Adjustment */
-@media (max-width: 768px) {
-    .music-player {
-        margin-top: 20px; /* Reduced from 70px for better fit */
-        max-width: 95%;
-    }
-    .hero h1 {
-        font-size: 3rem; /* Slightly smaller for mobile screens */
-    }
-}
         .content-wrapper { position: relative; z-index: 10; background: var(--bg-dark); box-shadow: 0 -30px 60px rgba(0,0,0,0.9); }
 
         /* SKILLS BARS */
@@ -287,6 +231,14 @@
     color: white;
 }
 
+.hero .music-player {
+    position: absolute;
+    bottom: 40px;   /* distance from bottom of hero */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;       /* remove any previous margin */
+}
+
 .player-top { display: flex; align-items: center; gap: 15px; }
 
 #songCover { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
@@ -315,7 +267,7 @@
 .controls button { background: none; border: none; color: white; font-size: 18px; cursor: pointer; transition: 0.2s; }
 .controls button:hover { transform: scale(1.1); }
 
-playBtn { 
+#playBtn { 
     background: white; 
     color: black; 
     width: 40px; 
@@ -351,53 +303,42 @@ playBtn {
     </nav>
 
     <section class="hero" id="home">
-    <div class="hero-content">
         <h1>HI, I'M <span>DEVANSHU</span></h1>
         <p>Code Worm | Content Creator | Tech Enthusiast</p>
-    </div>
-        
-        <div class="hero-btns">
+        <div>
             <a href="#socials" class="btn btn-red">My Socials</a>
             <a href="#contact" class="btn btn-outline">Connect</a>
-        </div>
-
-        <div style="margin-top: 20px;">
+            <br><br>
             <a href="resume.pdf" class="btn btn-red" download>Download Resume</a>
         </div>
+        <div class="music-player">
+    <div class="player-top">
+        <img id="songCover" src="img/img1.jpg" alt="cover">
+        <div class="song-info">
+            <h3 id="songTitle">Loading...</h3>
+            <p id="songArtist">Devanshu</p>
+        </div>
     </div>
 
-    <h3 style="margin-top:50px; font-weight:600; color:#ccc; letter-spacing:1px; font-size: 1rem;">
-        ❤️ Loved Songs
-    </h3>
-
-    <div class="music-player">
-        <div class="player-top">
-            <img id="songCover" src="img/img1.jpg" alt="cover">
-            <div class="song-info">
-                <h3 id="songTitle">Loading...</h3>
-                <p id="songArtist">Devanshu</p>
-            </div>
+    <div class="progress-area">
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
-
-        <div class="progress-area">
-            <div class="progress-container" id="progressContainer">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
-            <button id="playBtn" class="play-pause">
-                <i class="fas fa-play" id="playIcon"></i>
-            </button>
-            <button id="nextBtn"><i class="fas fa-step-forward"></i></button>
-        </div>
-        <audio id="musicPlayer"></audio>
     </div>
-</section>
 
-<div class="content-wrapper">
-    <section class="section-padding" id="about">
+    <div class="controls">
+        <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
+        <button id="playBtn" class="play-pause">
+            <i class="fas fa-play" id="playIcon"></i>
+        </button>
+        <button id="nextBtn"><i class="fas fa-step-forward"></i></button>
+    </div>
+
+    <audio id="musicPlayer"></audio>
+</div>
+
+        
+    </section>
     <div class="content-wrapper">
     <section class="section-padding" id="about">
         <h2 class="section-title">About <span>Me</span></h2>
@@ -604,7 +545,7 @@ const songArtist = document.getElementById("songArtist");
 const songCover = document.getElementById("songCover");
 
 // Load songs from your JSON file
-fetch("songs.json")
+fetch("music/songs.json")
     .then(res => res.json())
     .then(data => {
         songs = data;
@@ -668,22 +609,3 @@ progressContainer.addEventListener("click", (e) => {
 // Auto-play next song
 audioPlayer.addEventListener("ended", () => nextBtn.click());
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
