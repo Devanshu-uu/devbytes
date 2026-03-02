@@ -1031,34 +1031,6 @@
         // Add Loved Songs buttons dynamically
         const lovedSongsContainer = document.getElementById("lovedSongs");
 
-        function updateLovedSongs() {
-            lovedSongsContainer.innerHTML = "";
-            songs.forEach((song, idx) => {
-                const btn = document.createElement("button");
-                btn.textContent = song.title;
-                btn.onclick = () => {
-                    currentSongIndex = idx;
-                    loadSong(currentSongIndex);
-                    audioPlayer.play();
-                    playIcon.className = "fas fa-pause";
-                };
-                lovedSongsContainer.appendChild(btn);
-            });
-        }
-
-        // Call after songs loaded
-        fetch("songs.json")
-            .then(res => res.json())
-            .then(data => {
-                console.log("Songs Loaded:", data);
-                songs = data;
-                loadSong(currentSongIndex);
-                updateLovedSongs(); // <-- update loved songs buttons
-            })
-            .catch(err => {
-                console.error("JSON Load Failed:", err);
-                songs = [{ title: "song1", artist: "Devanshu", cover: "img/img1.jpg", src: "music/song1.mp3" }];
-                loadSong(0);
-                updateLovedSongs(); // <-- update loved songs buttons
-            });
+    
     </script>
+
