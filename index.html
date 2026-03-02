@@ -111,14 +111,17 @@
     color: var(--primary); 
 }
 
-.hero p { 
-    color: #ccc; 
-    margin: 20px 0; 
-    max-width: 550px; 
+.hero p {
+    color: #ccc;
+    margin: 20px 0;
+    max-width: 550px;
+    display: block;           /* Ensure it behaves like a block element */
+    text-align: center;       /* Keep text horizontally centered */
+    min-height: 1.5em;        /* Prevent vertical shift during typing */
 }
 
 .hero p span.glow {
-    transition: 0.3s;
+    display: inline-block;    /* So glow text doesn't collapse */
 }
 
 /* ================= BUTTONS ================= */
@@ -662,6 +665,7 @@ progressContainer.addEventListener("click", (e) => {
 // Auto-play next song
 audioPlayer.addEventListener("ended", () => nextBtn.click());
 </script>
+
 
 
 
