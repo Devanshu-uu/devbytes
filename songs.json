@@ -83,4 +83,465 @@
     "src": "music/song14.mp3",
     "cover": "img/song14.jpg"
   }
+
+
+  
+    {
+        "artist":  "Atif Aslam",
+        "title":  "Jeena Jeena (From \"Badlapur\")",
+        "cover":  "img/song15.jpg",
+        "src":  "music/song15.mp3"
+    },
+    {
+        "artist":  "Ali Sethi, Shae Gill",
+        "title":  "Pasoori",
+        "cover":  "img/song16.jpg",
+        "src":  "music/song16.mp3"
+    },
+    {
+        "artist":  "Dhvani Bhanushali, Nikhil D\u0027Souza, Tanishk Bagchi",
+        "title":  "Vaaste",
+        "cover":  "img/song17.jpg",
+        "src":  "music/song17.mp3"
+    },
+    {
+        "artist":  "Pritam, Arijit Singh",
+        "title":  "Raabta",
+        "cover":  "img/song18.jpg",
+        "src":  "music/song18.mp3"
+    },
+    {
+        "artist":  "Aditya A",
+        "title":  "Chaand Baaliyan",
+        "cover":  "img/song19.jpg",
+        "src":  "music/song19.mp3"
+    },
+    {
+        "artist":  "Pritam, Atif Aslam",
+        "title":  "Tu Jaane Na",
+        "cover":  "img/song20.jpg",
+        "src":  "music/song20.mp3"
+    },
+    {
+        "artist":  "Pritam, Arijit Singh",
+        "title":  "Khairiyat",
+        "cover":  "img/song21.jpg",
+        "src":  "music/song21.mp3"
+    },
+    {
+        "artist":  "Jeet Gannguli, Arijit Singh, Rashmi Virag",
+        "title":  "Muskurane - Romantic",
+        "cover":  "img/song22.jpg",
+        "src":  "music/song22.mp3"
+    },
+    {
+        "artist":  "Akhil, Dhvani Bhanushali, Kunaal Vermaa, Abhijit Vaghani",
+        "title":  "Duniyaa (From \"Luka Chuppi\")",
+        "cover":  "img/song23.jpg",
+        "src":  "music/song23.mp3"
+    },
+    {
+        "artist":  "Dhvani Bhanushali, Ash King",
+        "title":  "Mera Yaar",
+        "cover":  "img/song24.jpg",
+        "src":  "music/song24.mp3"
+    },
+    {
+        "artist":  "Yo Yo Honey Singh",
+        "title":  "Dheere Dheere",
+        "cover":  "img/song25.jpg",
+        "src":  "music/song25.mp3"
+    },
+    {
+        "artist":  "Pritam, Arijit Singh",
+        "title":  "Hawayein",
+        "cover":  "img/song26.jpg",
+        "src":  "music/song26.mp3"
+    },
+    {
+        "artist":  "Rochak Kohli, Ayushmann Khurrana",
+        "title":  "Mitti Di Khushboo",
+        "cover":  "img/song27.jpg",
+        "src":  "music/song27.mp3"
+    },
+    {
+        "artist":  "Arjun Kanungo, Momina Mustehsan, Kunaal Vermaa",
+        "title":  "Aaya Na Tu",
+        "cover":  "img/song28.jpg",
+        "src":  "music/song28.mp3"
+    },
+    {
+        "artist":  "Arijit Singh, Mithoon",
+        "title":  "Humdard",
+        "cover":  "img/song29.jpg",
+        "src":  "music/song29.mp3"
+    },
+    {
+        "artist":  "Alka Yagnik, Arijit Singh",
+        "title":  "Agar Tum Saath Ho",
+        "cover":  "img/song30.jpg",
+        "src":  "music/song30.mp3"
+    },
+    {
+        "artist":  "Sachin-Jigar, Parineeti Chopra, Kausar Munir",
+        "title":  "Maana Ke Hum Yaar Nahin",
+        "cover":  "img/song31.jpg",
+        "src":  "music/song31.mp3"
+    },
+    {
+        "artist":  "Pritam, Amit Mishra, Shilpa Rao",
+        "title":  "Bulleya",
+        "cover":  "img/song32.jpg",
+        "src":  "music/song32.mp3"
+    },
+    {
+        "artist":  "Vishal-Shekhar, KK",
+        "title":  "Ajab Si",
+        "cover":  "img/song33.jpg",
+        "src":  "music/song33.mp3"
+    },
+    {
+        "artist":  "King",
+        "title":  "Tu Aake Dekhle",
+        "cover":  "img/song34.jpg",
+        "src":  "music/song34.mp3"
+    },
+    {
+        "artist":  "Arijit Singh, Hanif Shaikh",
+        "title":  "Tose Naina",
+        "cover":  "img/song35.jpg",
+        "src":  "music/song35.mp3"
+    },
+    {
+        "artist":  "Anuv Jain",
+        "title":  "Mazaak",
+        "cover":  "img/song36.jpg",
+        "src":  "music/song36.mp3"
+    },
+    {
+        "artist":  "Vishal-Shekhar, KK, Shilpa Rao, Anvita Dutt Guptan",
+        "title":  "Khuda Jaane",
+        "cover":  "img/song37.jpg",
+        "src":  "music/song37.mp3"
+    },
+    {
+        "artist":  "Mix Music",
+        "title":  "Muskurane Ki Baat Karte Ho",
+        "cover":  "img/song38.jpg",
+        "src":  "music/song38.mp3"
+    },
+    {
+        "artist":  "Sachin-Jigar, Mohit Chauhan, Priya Saraiya",
+        "title":  "Khoya Khoya",
+        "cover":  "img/song39.jpg",
+        "src":  "music/song39.mp3"
+    },
+    {
+        "artist":  "DJ Shine India",
+        "title":  "Tere Sang Ishq Tari Hai Lofi",
+        "cover":  "img/song40.jpg",
+        "src":  "music/song40.mp3"
+    },
+    {
+        "artist":  "Anurag Saikia, Raghav Chaitanya, Raj Shekhar, Nikhita Gandhi",
+        "title":  "Aise Kyun",
+        "cover":  "img/song41.jpg",
+        "src":  "music/song41.mp3"
+    },
+    {
+        "artist":  "B Praak",
+        "title":  "Aa Chaliye (From \"Honeymoon\")",
+        "cover":  "img/song42.jpg",
+        "src":  "music/song42.mp3"
+    },
+    {
+        "artist":  "SalimΓÇôSulaiman, Roop Kumar Rathod, Jaideep Sahni",
+        "title":  "Tujh Mein Rab Dikhta Hai",
+        "cover":  "img/song43.jpg",
+        "src":  "music/song43.mp3"
+    },
+    {
+        "artist":  "Darshan Raval",
+        "title":  "Hawa Banke",
+        "cover":  "img/song44.jpg",
+        "src":  "music/song44.mp3"
+    },
+    {
+        "artist":  "Ezu",
+        "title":  "Bahara X",
+        "cover":  "img/song45.jpg",
+        "src":  "music/song45.mp3"
+    },
+    {
+        "artist":  "Paradox",
+        "title":  "Jaadugar",
+        "cover":  "img/song46.jpg",
+        "src":  "music/song46.mp3"
+    },
+    {
+        "artist":  "Paradox",
+        "title":  "Rihaayi",
+        "cover":  "img/song47.jpg",
+        "src":  "music/song47.mp3"
+    },
+    {
+        "artist":  "Muzic HRD",
+        "title":  "Taare",
+        "cover":  "img/song48.jpg",
+        "src":  "music/song48.mp3"
+    },
+    {
+        "artist":  "Amit Trivedi, Mohan Kannan",
+        "title":  "Manja - From \"Kai Po Che\"",
+        "cover":  "img/song49.jpg",
+        "src":  "music/song49.mp3"
+    },
+    {
+        "artist":  "Ranjit Bawa, Jassi X",
+        "title":  "Meri Sardarniye",
+        "cover":  "img/song50.jpg",
+        "src":  "music/song50.mp3"
+    },
+    {
+        "artist":  "Ali Zafar",
+        "title":  "Jhoom",
+        "cover":  "img/song51.jpg",
+        "src":  "music/song51.mp3"
+    },
+    {
+        "artist":  "Nusrat Fateh Ali Khan",
+        "title":  "Wo Tera Kehna Ki Main Hu Zindagi Teri",
+        "cover":  "img/song52.jpg",
+        "src":  "music/song52.mp3"
+    },
+    {
+        "artist":  "The PropheC",
+        "title":  "Kina Chir",
+        "cover":  "img/song53.jpg",
+        "src":  "music/song53.mp3"
+    },
+    {
+        "artist":  "Ami Mishra, Kunaal Vermaa",
+        "title":  "Hasi - Male Version",
+        "cover":  "img/song54.jpg",
+        "src":  "music/song54.mp3"
+    },
+    {
+        "artist":  "Harnoor, Gifty",
+        "title":  "Waalian",
+        "cover":  "img/song55.jpg",
+        "src":  "music/song55.mp3"
+    },
+    {
+        "artist":  "Maninder Buttar",
+        "title":  "Sakhiyaan",
+        "cover":  "img/song56.jpg",
+        "src":  "music/song56.mp3"
+    },
+    {
+        "artist":  "Akhil, Dhvani Bhanushali, Kunaal Vermaa, Abhijit Vaghani",
+        "title":  "Duniyaa (From \"Luka Chuppi\")",
+        "cover":  "img/song57.jpg",
+        "src":  "music/song57.mp3"
+    },
+    {
+        "artist":  "Pritam, KK, Sayeed Quadri",
+        "title":  "Dil Ibaadat",
+        "cover":  "img/song58.jpg",
+        "src":  "music/song58.mp3"
+    },
+    {
+        "artist":  "Atif Aslam, Himesh Reshammiya, Manoj Muntashir",
+        "title":  "Dil Meri Na Sune",
+        "cover":  "img/song59.jpg",
+        "src":  "music/song59.mp3"
+    },
+    {
+        "artist":  "Ash King, Sachin-Jigar",
+        "title":  "Nazar Na Lag Jaaye (From \"Stree\")",
+        "cover":  "img/song60.jpg",
+        "src":  "music/song60.mp3"
+    },
+    {
+        "artist":  "Akhil Sachdeva, Mansheel Gujral",
+        "title":  "Humsafar",
+        "cover":  "img/song61.jpg",
+        "src":  "music/song61.mp3"
+    },
+    {
+        "artist":  "Ammy Virk, Avvy Sra, Harmanjeet Singh",
+        "title":  "Chann Sitare (From \"Oye Makhna\")",
+        "cover":  "img/song62.jpg",
+        "src":  "music/song62.mp3"
+    },
+    {
+        "artist":  "Darshan Raval",
+        "title":  "Hawa Banke",
+        "cover":  "img/song63.jpg",
+        "src":  "music/song63.mp3"
+    },
+    {
+        "artist":  "Pritam, Atif Aslam, Alisha Chinai",
+        "title":  "Tera Hone Laga Hoon",
+        "cover":  "img/song64.jpg",
+        "src":  "music/song64.mp3"
+    },
+    {
+        "artist":  "Rashid Ali",
+        "title":  "Kabhi Kabhi Aditi - Remix",
+        "cover":  "img/song65.jpg",
+        "src":  "music/song65.mp3"
+    },
+    {
+        "artist":  "Sohail Sen, Rahat Fateh Ali Khan, Irshad Kamil",
+        "title":  "Isq Risk",
+        "cover":  "img/song66.jpg",
+        "src":  "music/song66.mp3"
+    },
+    {
+        "artist":  "Pritam, Jubin Nautiyal, Neelesh Misra",
+        "title":  "Zindagi Kuch Toh Bata (Reprise)",
+        "cover":  "img/song67.jpg",
+        "src":  "music/song67.mp3"
+    },
+    {
+        "artist":  "A.R. Rahman, Jaswinder Singh, Shiraz Uppal",
+        "title":  "Raanjhanaa (From \"Raanjhanaa\")",
+        "cover":  "img/song68.jpg",
+        "src":  "music/song68.mp3"
+    },
+    {
+        "artist":  "A.R. Rahman, Javed Ali, KIRTI SAGATHIA, Pooja AV",
+        "title":  "Tum Tak (From \"Raanjhanaa\")",
+        "cover":  "img/song69.jpg",
+        "src":  "music/song69.mp3"
+    },
+    {
+        "artist":  "Pritam, Mohit Chauhan, Irshad Kamil",
+        "title":  "Tum Se Hi",
+        "cover":  "img/song70.jpg",
+        "src":  "music/song70.mp3"
+    },
+    {
+        "artist":  "Mithoon, Papon, Sayeed Quadri",
+        "title":  "Humnava",
+        "cover":  "img/song71.jpg",
+        "src":  "music/song71.mp3"
+    },
+    {
+        "artist":  "Shankar-Ehsaan-Loy, Shafqat Amanat Ali",
+        "title":  "Tere Naina",
+        "cover":  "img/song72.jpg",
+        "src":  "music/song72.mp3"
+    },
+    {
+        "artist":  "A.R. Rahman, Rabbi, Gulzar",
+        "title":  "Challa",
+        "cover":  "img/song73.jpg",
+        "src":  "music/song73.mp3"
+    },
+    {
+        "artist":  "Akhil",
+        "title":  "Khaab",
+        "cover":  "img/song74.jpg",
+        "src":  "music/song74.mp3"
+    },
+    {
+        "artist":  "Altamash Faridi, Babli Haque, Sandeep Nath",
+        "title":  "Jeena Marna",
+        "cover":  "img/song75.jpg",
+        "src":  "music/song75.mp3"
+    },
+    {
+        "artist":  "Darshan Raval",
+        "title":  "Rabba Mehar Kari",
+        "cover":  "img/song76.jpg",
+        "src":  "music/song76.mp3"
+    },
+    {
+        "artist":  "Guru Randhawa, Sanjoy",
+        "title":  "Moon Rise",
+        "cover":  "img/song77.jpg",
+        "src":  "music/song77.mp3"
+    },
+    {
+        "artist":  "Vishal-Shekhar, Sonu Nigam, Shreya Ghoshal",
+        "title":  "Main Agar Kahoon",
+        "cover":  "img/song78.jpg",
+        "src":  "music/song78.mp3"
+    },
+    {
+        "artist":  "Darshan Raval",
+        "title":  "Tera Zikr",
+        "cover":  "img/song79.jpg",
+        "src":  "music/song79.mp3"
+    },
+    {
+        "artist":  "Arijit Singh, Amaal Mallik, Kumaar",
+        "title":  "Roke Na Ruke Naina",
+        "cover":  "img/song80.jpg",
+        "src":  "music/song80.mp3"
+    },
+    {
+        "artist":  "Mohit Lalwani",
+        "title":  "Tum Prem Ho Reprise",
+        "cover":  "img/song81.jpg",
+        "src":  "music/song81.mp3"
+    },
+    {
+        "artist":  "Arijit Singh",
+        "title":  "Palat - Tera Hero Idhar Hai",
+        "cover":  "img/song82.jpg",
+        "src":  "music/song82.mp3"
+    },
+    {
+        "artist":  "Pritam, Javed Bashir, Rajat Arora",
+        "title":  "Ye Tune Kya Kiya",
+        "cover":  "img/song83.jpg",
+        "src":  "music/song83.mp3"
+    },
+    {
+        "artist":  "Signature By SB",
+        "title":  "Heartbreak",
+        "cover":  "img/song84.jpg",
+        "src":  "music/song84.mp3"
+    },
+    {
+        "artist":  "Talwiinder",
+        "title":  "Tera Saath",
+        "cover":  "img/song85.jpg",
+        "src":  "music/song85.mp3"
+    },
+    {
+        "artist":  "KK",
+        "title":  "Such Keh Raha Hai",
+        "cover":  "img/song86.jpg",
+        "src":  "music/song86.mp3"
+    },
+    {
+        "artist":  "Sanam, Simran Sehgal",
+        "title":  "Yeh Raaten Yeh Mausam",
+        "cover":  "img/song87.jpg",
+        "src":  "music/song87.mp3"
+    },
+    {
+        "artist":  "Madhav Mahajan",
+        "title":  "Chann Vi Gawah",
+        "cover":  "img/song88.jpg",
+        "src":  "music/song88.mp3"
+    },
+    {
+        "artist":  "Pritam, Mohit Chauhan, Antara Mitra",
+        "title":  "Bheegi Si Bhaagi Si",
+        "cover":  "img/song89.jpg",
+        "src":  "music/song89.mp3"
+    },
+    {
+        "artist":  "Vishal-Shekhar, Amitabh Bhattacharya, Anusha Mani",
+        "title":  "Tera Rastaa Chhodoon Na",
+        "cover":  "img/song90.jpg",
+        "src":  "music/song90.mp3"
+    }
+
+
 ]
