@@ -185,19 +185,42 @@
             /* Space between name and description */
         }
 
-        .hero h1 span {
-            color: var(--primary);
-        }
+
 
         .hero p {
             color: #ccc;
-            margin: 20px 0;
+            margin: 1px auto 7px auto;
+            /* auto on left/right centers it */
             max-width: 550px;
+            text-align: center;
+            min-height: 30px;
         }
 
         .hero p span.glow {
-            transition: 0.3s;
+            display: inline-block;
+            text-align: center;
         }
+
+
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .cursor.hidden {
+            visibility: hidden;
+        }
+
+
 
 
 
@@ -622,7 +645,7 @@
             transform: scale(1.1);
         }
 
-        playBtn {
+        .playBtn {
             background: white;
             color: black;
             width: 40px;
@@ -631,6 +654,82 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            color: white;
+            font-weight: 100;
+            margin-left: 2px;
+            opacity: 1;
+        }
+
+        /* Blinking animation */
+        .cursor.blink {
+            animation: blink 1s infinite;
+        }
+
+        /* Smooth hide */
+        .cursor.hide {
+            animation: none;
+            /* stop blinking */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }
+
+
+
+        .hero h1 {
+            color: white;
+            font-size: clamp(2.8rem, 10vw, 5.5rem);
+            font-weight: 800;
+
+            text-shadow:
+                2px 2px 0 black,
+                -2px -2px 0 black,
+                2px -2px 0 black,
+                -2px 2px 0 black,
+                0px 2px 0 black,
+                2px 0px 0 black,
+                0px -2px 0 black,
+                -2px 0px 0 black;
+        }
+
+        .red-name {
+            color: var(--primary);
+        }
+
+        .song-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .song-info h3 {
+            font-size: 16px;
+            margin: 0;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .song-info p {
+            font-size: 13px;
+            color: #b3b3b3;
+            margin: 2px 0 0 0;
+            text-align: left !important;
         }
     </style>
 </head>
@@ -660,9 +759,10 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>HI, I'M <span>DEVANSHU</span></h1>
-            <p>Code Worm | Content Creator | Tech Enthusiast</p>
+            <h1><span id="main-title"></span><span class="cursor">|</span></h1>
+            <p><span id="subtitle" class="glow"></span></p>
         </div>
+
 
         <div class="hero-btns">
             <a href="#socials" class="btn btn-red">My Socials</a>
@@ -672,7 +772,7 @@
         <div style="margin-top: 20px;">
             <a href="resume.pdf" class="btn btn-red" download>Download Resume</a>
         </div>
-        </div>
+
 
         <h3 style="margin-top:50px; font-weight:600; color:#ccc; letter-spacing:1px; font-size: 1rem;">
             ❤️ Loved Songs
@@ -875,7 +975,7 @@
                     }
                 });
 
-                // CERTIFICATE SLIDER (Double images for infinite scroll)
+                // CERTIFICATE SLIDER
                 const wrapper = document.getElementById('certWrapper');
                 wrapper.innerHTML += wrapper.innerHTML;
 
@@ -908,40 +1008,91 @@
                 }
                 fetchYT();
 
-                // TYPING ANIMATION WITH GLOW
-                const heroText = document.querySelector('.hero p');
+                // TYPEWRITER FOR MAIN TITLE
+                const mainTitleEl = document.getElementById('main-title');
+                const subtitleEl = document.getElementById('subtitle');
+                const cursor = document.querySelector('.cursor');
+
+                const titleText = "HI, I'M DEVANSHU";
                 const roles = ["Code Worm", "AI Enthusiast", "YouTuber"];
-                const colors = ["#ff0000", "#00ff00", "#0000ff"]; // Glow colors for each role
-                let i = 0, j = 0;
+                const colors = ["#ff0000", "#00ff00", "#0000ff"];
 
-                function type() {
-                    if (j < roles[i].length) {
-                        heroText.innerHTML = `<span class="glow" style="text-shadow: 0 0 8px ${colors[i]},0 0 12px ${colors[i]},0 0 16px ${colors[i]}">${roles[i].slice(0, j + 1)}</span>`;
-                        j++;
-                        setTimeout(type, 150);
+                let titleIndex = 0;
+                let roleIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+
+                function typeTitle() {
+
+                    if (titleIndex <= titleText.length) {
+
+                        let currentText = titleText.slice(0, titleIndex);
+
+                        // Make "DEVANSHU" red
+                        if (titleIndex > 7) {
+                            const whitePart = "HI, I'M ";
+                            const redPart = currentText.slice(7);
+                            currentText = `${whitePart}<span class="red-name">${redPart}</span>`;
+                        }
+
+                        mainTitleEl.innerHTML = currentText;
+                        titleIndex++;
+
+                        setTimeout(typeTitle, 120);
+
                     } else {
-                        setTimeout(() => { erase() }, 1000);
+
+                        // Start blinking after typing finishes
+                        cursor.classList.add("blink");
+
+                        // Blink for 1 second, then stop + hide smoothly
+                        setTimeout(() => {
+                            cursor.classList.remove("blink");  // stop blinking first
+                            cursor.classList.add("hide");      // then fade out
+                            typeSubtitle();
+                        }, 1000);
                     }
                 }
 
-                function erase() {
-                    if (j >= 0) {
-                        heroText.innerHTML = `<span class="glow" style="text-shadow: 0 0 8px ${colors[i]},0 0 12px ${colors[i]},0 0 16px ${colors[i]}">${roles[i].slice(0, j)}</span>`;
-                        j--;
-                        setTimeout(erase, 80);
+                function typeSubtitle() {
+                    const currentRole = roles[roleIndex];
+
+                    if (!isDeleting) {
+                        subtitleEl.textContent = currentRole.slice(0, charIndex);
+                        charIndex++;
+
+                        if (charIndex > currentRole.length) {
+                            isDeleting = true;
+                            setTimeout(typeSubtitle, 1000);
+                            return;
+                        }
+
                     } else {
-                        i = (i + 1) % roles.length;
-                        setTimeout(type, 500);
+                        subtitleEl.textContent = currentRole.slice(0, charIndex);
+                        charIndex--;
+
+                        if (charIndex < 0) {
+                            isDeleting = false;
+                            roleIndex = (roleIndex + 1) % roles.length;
+                            charIndex = 0;
+                        }
                     }
+
+                    setTimeout(typeSubtitle, isDeleting ? 60 : 120);
                 }
 
-                type();
+
+                typeTitle();   // ← ADD THIS LINE
 
                 // DYNAMIC YEAR
                 document.getElementById('year').textContent = new Date().getFullYear();
+
+                // DYNAMIC YEAR
+                document.getElementById('year').textContent = new Date().getFullYear();
+
+                // MUSIC PLAYER
                 let songs = [];
                 let currentSongIndex = 0;
-
                 const audioPlayer = document.getElementById("musicPlayer");
                 const playBtn = document.getElementById("playBtn");
                 const playIcon = document.getElementById("playIcon");
@@ -954,7 +1105,6 @@
                 const songArtist = document.getElementById("songArtist");
                 const songCover = document.getElementById("songCover");
 
-                // Load songs from your JSON file
                 fetch("songs.json")
                     .then(res => res.json())
                     .then(data => {
@@ -962,7 +1112,6 @@
                         loadSong(currentSongIndex);
                     })
                     .catch(err => {
-                        // Fallback if JSON fails
                         songs = [{ title: "song1", artist: "Devanshu", cover: "img/img1.jpg", src: "music/song1.mp3" }];
                         loadSong(0);
                     });
@@ -975,7 +1124,6 @@
                     audioPlayer.src = song.src;
                 }
 
-                // Play/Pause Logic
                 playBtn.addEventListener("click", () => {
                     if (audioPlayer.paused) {
                         audioPlayer.play();
@@ -986,7 +1134,6 @@
                     }
                 });
 
-                // Next/Prev Logic
                 nextBtn.addEventListener("click", () => {
                     currentSongIndex = (currentSongIndex + 1) % songs.length;
                     loadSong(currentSongIndex);
@@ -1001,14 +1148,12 @@
                     playIcon.className = "fas fa-pause";
                 });
 
-                // Progress Bar update
                 audioPlayer.addEventListener("timeupdate", () => {
                     const { duration, currentTime } = audioPlayer;
                     const progressPercent = (currentTime / duration) * 100;
                     progressBar.style.width = `${progressPercent}%`;
                 });
 
-                // Click on progress bar to seek
                 progressContainer.addEventListener("click", (e) => {
                     const width = progressContainer.clientWidth;
                     const clickX = e.offsetX;
@@ -1016,6 +1161,6 @@
                     audioPlayer.currentTime = (clickX / width) * duration;
                 });
 
-                // Auto-play next song
                 audioPlayer.addEventListener("ended", () => nextBtn.click());
             </script>
+            
