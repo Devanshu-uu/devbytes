@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Database, Youtube, Brain } from 'lucide-react';
 
-const MEE_IMG = 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/18d3b3d05_mee.jpg';
-const MEE1_IMG = 'https://media.base44.com/images/public/69bea7ccd59c131015969b08/ed9f2ef4b_G0gAwpPXYAAN3Pt.jpg';
+const MEE_IMG = '';
+const MEE1_IMG = '';
 
 const cards = [
 { icon: Code2, label: 'Web Development', desc: 'Building modern responsive UIs with HTML, CSS & JavaScript' },
