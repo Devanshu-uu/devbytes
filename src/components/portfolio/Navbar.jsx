@@ -114,13 +114,7 @@ export default function Navbar() {
                 </button>
               ))}
 
-              {/* Logout mobile */}
-              <button
-                onClick={handleLogout}
-                className="block text-red-400 font-semibold"
-              >
-                Logout
-              </button>
+              
 
             </div>
           </motion.div>
