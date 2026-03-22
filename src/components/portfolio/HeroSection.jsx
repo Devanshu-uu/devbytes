@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Users, Mail, ArrowDown } from 'lucide-react';
 
-const HERO_IMG = '/img/hero.png';
+const HERO_IMG = 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/fda48d160_hero.png';
+
 
 const roles = ['Data Analyst', 'Web Developer', 'Content Creator', 'AI Enthusiast'];
 
