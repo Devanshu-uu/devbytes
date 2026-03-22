@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Code2, Database, Youtube, Brain } from 'lucide-react';
 
 const MEE_IMG = 'const HERO_IMG = 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/c7bc466e1_hero.png';';
-const MEE1_IMG = '';
+const MEE1_IMG = 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/c7bc466e1_hero.png';
 
 const cards = [
 { icon: Code2, label: 'Web Development', desc: 'Building modern responsive UIs with HTML, CSS & JavaScript' },
