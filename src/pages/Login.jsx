@@ -34,7 +34,7 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: 'http://localhost:5173/'
+        redirectTo: window.location.origin
       }
     })
 
@@ -62,7 +62,8 @@ export default function Login() {
 
         <button
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-2 bg-white text-black py-3 rounded-xl font-medium hover:bg-gray-200 transition"
+          disabled={loading}
+          className="w-full flex items-center justify-center gap-2 bg-white text-black py-3 rounded-xl font-medium hover:bg-gray-200 transition disabled:opacity-70"
         >
           <img
             src="https://www.svgrepo.com/show/475656/google-color.svg"
@@ -97,7 +98,7 @@ export default function Login() {
         <button
           onClick={handleLogin}
           disabled={loading}
-          className="w-full bg-red-600 hover:bg-red-500 text-white py-3 rounded-xl font-semibold transition"
+          className="w-full bg-red-600 hover:bg-red-500 text-white py-3 rounded-xl font-semibold transition disabled:opacity-70"
         >
           Sign in
         </button>
