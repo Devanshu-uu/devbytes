@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Database, Youtube, Brain } from 'lucide-react';
 
-const MEE_IMG = 'public/img/abo.png';
+const MEE_IMG = 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/e610270b3_file_00000000aff071fd8f89a7b6446d0bc7.png';
 const MEE1_IMG = 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/c7bc466e1_hero.png';
 
 const cards = [
