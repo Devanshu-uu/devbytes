@@ -67,15 +67,7 @@ export default function Navbar() {
               </li>
             ))}
 
-            {/* Logout */}
-            <li>
-              <button
-                onClick={handleLogout}
-                className="text-sm text-red-400 hover:text-red-300 transition-colors font-semibold"
-              >
-                Logout
-              </button>
-            </li>
+           
           </ul>
 
           {/* Mobile menu button */}
