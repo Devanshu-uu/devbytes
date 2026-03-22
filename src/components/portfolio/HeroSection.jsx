@@ -2,37 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Users, Mail, ArrowDown } from 'lucide-react';
 
-const HERO_IMG = 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/c7bc466e1_hero.png';
+const HERO_IMG = '/img/hero.png';
 
 const roles = ['Data Analyst', 'Web Developer', 'Content Creator', 'AI Enthusiast'];
 
-const titleFull = "HI, I'M DEVANSHU";
-const hiPart = "HI, I'M ";
-
 export default function HeroSection() {
-  const [displayedTitle, setDisplayedTitle] = useState('');
-  const [titleDone, setTitleDone] = useState(false);
-
   const [text, setText] = useState('');
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
-    if (displayedTitle.length < titleFull.length) {
-      const t = setTimeout(() => {
-        setDisplayedTitle(titleFull.slice(0, displayedTitle.length + 1));
-      }, 100);
-      return () => clearTimeout(t);
-    } else {
-      const t = setTimeout(() => setTitleDone(true), 500);
-      return () => clearTimeout(t);
-    }
-  }, [displayedTitle]);
-
-  useEffect(() => {
-    if (!titleDone) return;
-
     const current = roles[index];
     let timeout;
 
@@ -58,7 +38,7 @@ export default function HeroSection() {
     }
 
     return () => clearTimeout(timeout);
-  }, [text, isDeleting, index, titleDone]);
+  }, [text, isDeleting, index]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -71,8 +51,6 @@ export default function HeroSection() {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  const namePart = displayedTitle.slice(hiPart.length);
 
   return (
     <section
@@ -90,103 +68,91 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl w-full mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="flex-1 text-center"
+          className="mb-8"
         >
-          <p className="text-red-400 text-sm font-semibold tracking-[0.3em] uppercase mb-4">
-            Welcome to my portfolio
-          </p>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-2 tracking-tight">
-            {displayedTitle.length <= hiPart.length ? (
-              <>
-                {displayedTitle}
-                <span className="inline-block align-middle ml-1">
-                  <span
-                    className={`inline-block w-[3px] h-[0.95em] bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] ${
-                      showCursor ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  />
-                </span>
-              </>
-            ) : (
-              <>
-                <span className="text-white">{hiPart}</span>
-                <span className="text-red-500">{namePart}</span>
-                {!titleDone && (
-                  <span className="inline-block align-middle ml-1">
-                    <span
-                      className={`inline-block w-[3px] h-[0.95em] bg-white ${
-                        showCursor ? 'opacity-100' : 'opacity-0'
-                      }`}
-                    />
-                  </span>
-                )}
-              </>
-            )}
-          </h1>
-
-          <div className="h-10 flex items-center justify-center mt-2 mb-6">
-            <span className="text-xl sm:text-2xl text-gray-300 font-light flex items-center">
-              {text}
-              <span className="inline-block align-middle ml-1">
-                <span
-                  className={`inline-block w-[3px] h-6 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-opacity duration-75 ${
-                    showCursor ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-              </span>
-            </span>
-          </div>
-
-          <p className="text-gray-400 max-w-xl mx-auto leading-relaxed mb-8 text-sm sm:text-base">
-            BSc Life Science @ Delhi University. Passionate about Web Development, Data Science & AI.
-            Building cool things and sharing the journey on YouTube.
-          </p>
-
-          <div className="flex flex-wrap gap-3 justify-center">
-            <button
-              onClick={() => scrollTo('socials')}
-              className="bg-red-600 hover:bg-red-500 text-white px-7 py-3 rounded-lg font-semibold transition-all hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] flex items-center gap-2 text-sm"
-            >
-              <Users size={16} /> My Socials
-            </button>
-
-            <button
-              onClick={() => scrollTo('contact')}
-              className="border border-white/20 text-white hover:border-red-500/50 hover:text-red-300 px-7 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 text-sm"
-            >
-              <Mail size={16} /> Connect
-            </button>
-
-            <a
-              href="resume.pdf"
-              download
-              className="border border-red-500/40 text-red-400 hover:bg-red-500/10 px-7 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 text-sm"
-            >
-              <Download size={16} /> Resume
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="flex-shrink-0"
-        >
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-            <div className="absolute inset-0 bg-red-500/20 rounded-full blur-3xl" />
+          <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80">
+            <div className="absolute inset-0 bg-red-500/30 rounded-full blur-[100px]" />
             <img
               src={HERO_IMG}
               alt="Devanshu"
-              className="relative z-10 w-full h-full object-cover rounded-2xl border-2 border-red-500/30 shadow-[0_0_60px_rgba(239,68,68,0.2)]"
+              className="relative z-10 w-full h-full object-cover rounded-full border-2 border-red-500/30 shadow-[0_0_60px_rgba(239,68,68,0.2)]"
             />
           </div>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-red-400 text-sm font-semibold tracking-[0.3em] uppercase mb-4"
+        >
+          Welcome to my portfolio
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-2 tracking-tight text-white"
+        >
+          DEVANSHU
+        </motion.h1>
+
+        <div className="h-10 flex items-center justify-center mt-2 mb-6">
+          <span className="text-xl sm:text-2xl text-gray-300 font-light flex items-center">
+            {text}
+            <span className="inline-block align-middle ml-1">
+              <span
+                className={`inline-block w-[3px] h-6 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-opacity duration-75 ${
+                  showCursor ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            </span>
+          </span>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="text-gray-400 max-w-xl mx-auto leading-relaxed mb-8 text-sm sm:text-base"
+        >
+          BSc Life Science @ Delhi University. Passionate about Web Development, Data Science & AI.
+          Building cool things and sharing the journey on YouTube.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="flex flex-wrap gap-3 justify-center"
+        >
+          <button
+            onClick={() => scrollTo('socials')}
+            className="bg-red-600 hover:bg-red-500 text-white px-7 py-3 rounded-lg font-semibold transition-all hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] flex items-center gap-2 text-sm"
+          >
+            <Users size={16} /> My Socials
+          </button>
+
+          <button
+            onClick={() => scrollTo('contact')}
+            className="border border-white/20 text-white hover:border-red-500/50 hover:text-red-300 px-7 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 text-sm"
+          >
+            <Mail size={16} /> Connect
+          </button>
+
+          <a
+            href="resume.pdf"
+            download
+            className="border border-red-500/40 text-red-400 hover:bg-red-500/10 px-7 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 text-sm"
+          >
+            <Download size={16} /> Resume
+          </a>
         </motion.div>
       </div>
 
