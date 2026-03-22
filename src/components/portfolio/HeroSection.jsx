@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Users, Mail, ArrowDown } from 'lucide-react';
 
-const HERO_IMG = '/img/hero.png';
+const HERO_IMG = 'public/img/me.jpg';
 
 const roles = ['Data Analyst', 'Web Developer', 'Content Creator', 'AI Enthusiast'];
 
