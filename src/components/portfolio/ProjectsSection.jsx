@@ -1,74 +1,83 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, BarChart2, PieChart, ArrowUpRight } from 'lucide-react';
+import { Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const projects = [
   {
-    icon: Globe,
-    title: 'Frontend Development',
-    desc: 'Modern, responsive UI designs using HTML, CSS, and JavaScript with clean animations and great UX.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    color: 'from-blue-500/20 to-cyan-500/5',
-    borderColor: 'hover:border-blue-500/40',
+    label: 'Featured Project',
+    title: 'Frontend & Web Development',
+    desc: 'Modern, responsive web apps built with React, Tailwind and JavaScript. Clean animations, great UX and production-ready code.',
+    tags: ['React', 'Tailwind CSS', 'JavaScript'],
+    img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80',
+    flip: false,
   },
   {
-    icon: BarChart2,
-    title: 'Data Science Projects',
-    desc: 'Real-world dataset analysis and visualization using the Python ecosystem — Pandas, NumPy, Seaborn.',
-    tags: ['Python', 'Pandas', 'NumPy'],
-    color: 'from-green-500/20 to-emerald-500/5',
-    borderColor: 'hover:border-green-500/40',
+    label: 'Featured Project',
+    title: 'Data Science & Analysis',
+    desc: 'Real-world dataset analysis and visualization using the Python ecosystem — Pandas, NumPy, Seaborn — to extract meaningful insights.',
+    tags: ['Python', 'Pandas', 'NumPy', 'Seaborn'],
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
+    flip: true,
   },
   {
-    icon: PieChart,
-    title: 'Data Visualization',
-    desc: 'Insightful charts and graphs using Matplotlib and Seaborn to reveal patterns in complex datasets.',
-    tags: ['Matplotlib', 'Seaborn', 'Jupyter'],
-    color: 'from-red-500/20 to-orange-500/5',
-    borderColor: 'hover:border-red-500/40',
+    label: 'Featured Project',
+    title: 'AI & Automation Projects',
+    desc: 'Building intelligent tools and automations powered by AI APIs, machine learning models and smart workflows.',
+    tags: ['Python', 'AI', 'Automation'],
+    img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80',
+    flip: false,
   },
 ];
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 px-6 bg-[#07070a]">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <p className="text-red-500 text-xs font-bold tracking-[0.3em] uppercase mb-3">What I Build</p>
-          <h2 className="text-4xl font-black">My <span className="text-red-500">Projects</span></h2>
-        </motion.div>
+    <section id="projects" className="py-24 bg-[#07070a]">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-16 px-6"
+      >
+        <p className="text-red-500 text-xs font-bold tracking-[0.3em] uppercase mb-3">What I Build</p>
+        <h2 className="text-4xl font-black text-white">My <span className="text-red-500">Projects</span></h2>
+      </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className={`bg-gradient-to-br ${p.color} bg-[#111] border border-white/5 ${p.borderColor} rounded-2xl p-7 group cursor-pointer transition-all duration-300 hover:-translate-y-1`}
-            >
-              <div className="flex items-start justify-between mb-5">
-                <div className="w-11 h-11 bg-white/5 rounded-xl flex items-center justify-center">
-                  <p.icon size={22} className="text-gray-300" />
-                </div>
-                <ArrowUpRight size={16} className="text-gray-600 group-hover:text-red-400 transition-colors" />
+      <div className="max-w-5xl mx-auto px-6 space-y-24">
+        {projects.map((p, i) => (
+          <motion.div
+            key={p.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className={`flex flex-col ${p.flip ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-16`}
+          >
+            {/* Image */}
+            <div className="w-full md:w-1/2 flex-shrink-0">
+              <div className="rounded-2xl overflow-hidden border border-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+                <img src={p.img} alt={p.title} className="w-full h-56 md:h-72 object-cover" />
               </div>
-              <h3 className="font-bold text-white mb-2">{p.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-5">{p.desc}</p>
-              <div className="flex flex-wrap gap-2">
+            </div>
+
+            {/* Text */}
+            <div className="w-full md:w-1/2">
+              <p className="text-red-500 text-xs font-bold tracking-widest uppercase mb-3">{p.label}</p>
+              <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight">{p.title}</h3>
+              <div className="bg-[#111] border border-white/5 rounded-xl p-5 mb-5">
+                <p className="text-gray-400 text-sm leading-relaxed">{p.desc}</p>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-5">
                 {p.tags.map(tag => (
-                  <span key={tag} className="text-[10px] px-2.5 py-1 bg-white/5 rounded-full text-gray-400 font-medium">{tag}</span>
+                  <span key={tag} className="text-[11px] px-3 py-1 bg-white/5 rounded-full text-gray-400 font-medium border border-white/5">{tag}</span>
                 ))}
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <Link to="/projects" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-red-400 transition-colors text-sm">
+                <Globe size={14} /> View all projects
+              </Link>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
