@@ -1,11 +1,68 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Instagram, Github, Linkedin, Mail } from 'lucide-react';
+import { SocialLinks } from '@/components/ui/social-links';
 
 const socials = [
-  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  {
+    name: 'Instagram',
+    href: 'https://instagram.com',
+    iconUrl: 'https://cdn.simpleicons.org/instagram/E1306C',
+    hoverIconUrl: 'https://cdn.simpleicons.org/instagram/ffffff',
+  },
+  {
+    name: 'GitHub',
+    href: 'https://github.com',
+    iconUrl: 'https://cdn.simpleicons.org/github/888888',
+    hoverIconUrl: 'https://cdn.simpleicons.org/github/ffffff',
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://linkedin.com',
+    iconUrl: 'https://cdn.simpleicons.org/linkedin/0A66C2',
+    hoverIconUrl: 'https://cdn.simpleicons.org/linkedin/ffffff',
+  },
+  {
+    name: 'YouTube',
+    href: 'https://youtube.com/channel/UC24ZXuLKFu0ZMXOsSNL_qTQ',
+    iconUrl: 'https://cdn.simpleicons.org/youtube/FF0000',
+    hoverIconUrl: 'https://cdn.simpleicons.org/youtube/ffffff',
+  },
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com',
+    iconUrl: 'https://cdn.simpleicons.org/x/888888',
+    hoverIconUrl: 'https://cdn.simpleicons.org/x/ffffff',
+  },
+  {
+    name: 'Telegram',
+    href: 'https://t.me',
+    iconUrl: 'https://cdn.simpleicons.org/telegram/26A5E4',
+    hoverIconUrl: 'https://cdn.simpleicons.org/telegram/ffffff',
+  },
+  {
+    name: 'Discord',
+    href: 'https://discord.com',
+    iconUrl: 'https://cdn.simpleicons.org/discord/5865F2',
+    hoverIconUrl: 'https://cdn.simpleicons.org/discord/ffffff',
+  },
+  {
+    name: 'Snapchat',
+    href: 'https://snapchat.com',
+    iconUrl: 'https://cdn.simpleicons.org/snapchat/FFFC00',
+    hoverIconUrl: 'https://cdn.simpleicons.org/snapchat/ffffff',
+  },
+  {
+    name: 'Facebook',
+    href: 'https://facebook.com',
+    iconUrl: 'https://cdn.simpleicons.org/facebook/1877F2',
+    hoverIconUrl: 'https://cdn.simpleicons.org/facebook/ffffff',
+  },
+  {
+    name: 'Reddit',
+    href: 'https://reddit.com',
+    iconUrl: 'https://cdn.simpleicons.org/reddit/FF4500',
+    hoverIconUrl: 'https://cdn.simpleicons.org/reddit/ffffff',
+  },
 ];
 
 export default function ContactSection() {
@@ -26,21 +83,11 @@ export default function ContactSection() {
           href="mailto:devanshu@gmail.com"
           className="text-white font-semibold text-sm underline underline-offset-4 hover:text-red-400 transition-colors"
         >
-          devanshumohriya@gmail.com
+          devanshu@gmail.com
         </a>
 
-        <div className="flex items-center justify-center gap-5 mt-8">
-          {socials.map(({ icon: Icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/40 transition-all"
-            >
-              <Icon size={16} />
-            </a>
-          ))}
+        <div className="mt-10">
+          <SocialLinks socials={socials} />
         </div>
       </motion.div>
     </section>
