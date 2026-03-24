@@ -7,7 +7,6 @@ import CertificatesSection from '../components/portfolio/CertificatesSection';
 import ProjectsSection from '../components/portfolio/ProjectsSection';
 import YouTubeSection from '../components/portfolio/YouTubeSection';
 import SocialsSection from '../components/portfolio/SocialsSection';
-import ContactSection from '../components/portfolio/ContactSection';
 import FooterSection from '../components/portfolio/FooterSection';
 import MusicPlayer from '../components/portfolio/MusicPlayer';
 
@@ -22,7 +21,6 @@ export default function Portfolio() {
       <ProjectsSection />
       <YouTubeSection />
       <SocialsSection />
-      <ContactSection />
       <FooterSection />
       <MusicPlayer />
     </div>
