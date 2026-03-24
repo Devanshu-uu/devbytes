@@ -7,7 +7,7 @@ export function SocialLinks({ socials, className, ...props }) {
 
   return (
     <div
-      className={cn("flex items-center justify-center flex-wrap gap-1", className)}
+      className={cn("flex items-center justify-center flex-wrap gap-2", className)}
       {...props}
     >
       {socials.map((social, index) => (
@@ -16,14 +16,14 @@ export function SocialLinks({ socials, className, ...props }) {
           target="_blank"
           rel="noreferrer"
           className={cn(
-            "relative cursor-pointer px-3 py-2 transition-opacity duration-200 flex flex-col items-center group",
+            "relative cursor-pointer px-3 py-2 transition-all duration-200 flex flex-col items-center group",
             hoveredSocial && hoveredSocial !== social.name ? "opacity-40" : "opacity-100"
           )}
           key={index}
           onMouseEnter={() => setHoveredSocial(social.name)}
           onMouseLeave={() => setHoveredSocial(null)}
         >
-          <div className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center mb-1 group-hover:border-white/40 transition-all overflow-hidden bg-white/5 group-hover:bg-white/10">
+          <div className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center mb-1 overflow-hidden bg-white/5 group-hover:bg-white/10 group-hover:border-red-400/50 group-hover:shadow-[0_0_18px_rgba(239,68,68,0.25)] transition-all duration-300">
             <AnimatePresence mode="wait">
               {hoveredSocial === social.name ? (
                 <motion.img
