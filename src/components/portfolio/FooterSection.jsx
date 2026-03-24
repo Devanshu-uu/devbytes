@@ -16,7 +16,7 @@ export default function FooterSection() {
         </div>
 
         <div className="flex items-center gap-6">
-          {['home', 'about', 'projects', 'contact'].map(id => (
+          {['home', 'about', 'projects', 'socials'].map(id => (
             <button
               key={id}
               onClick={() => scrollTo(id)}
