@@ -74,11 +74,19 @@ export default function ContactSection() {
         viewport={{ once: true }}
         className="max-w-xl mx-auto text-center"
       >
-        <h2 className="text-5xl font-black text-white mb-6">Contact</h2>
+        <p className="text-red-500 text-xs font-bold tracking-[0.3em] uppercase mb-3">
+          Get In Touch
+        </p>
+
+        <h2 className="text-5xl font-black text-white mb-6">
+          Contact
+        </h2>
+
         <p className="text-gray-400 text-sm leading-relaxed mb-6">
           I'm currently looking to join a cross-functional team that values improving people's
           lives through accessible design, or have a project in mind? Let's connect.
         </p>
+
         <a
           href="mailto:devanshu@gmail.com"
           className="text-white font-semibold text-sm underline underline-offset-4 hover:text-red-400 transition-colors"
