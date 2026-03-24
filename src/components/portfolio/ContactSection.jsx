@@ -91,7 +91,7 @@ export default function ContactSection() {
           href="mailto:devanshu@gmail.com"
           className="text-white font-semibold text-sm underline underline-offset-4 hover:text-red-400 transition-colors"
         >
-          devanshu@gmail.com
+          devanshumohriya@gmail.com
         </a>
 
         <div className="mt-10">
