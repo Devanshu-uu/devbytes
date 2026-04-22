@@ -1,169 +1,185 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const scrollLinks = ['Home', 'About', 'Skills', 'Certificates', 'Projects', 'YouTube', 'Socials', 'Contact'];
+const NAV_ITEMS = [
+  { label: 'Home', id: 'home' },
+  { label: 'About', id: 'about' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Education', id: 'education' },
+  { label: 'Certificates', id: 'certificates' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'YouTube', id: 'youtube' },
+  { label: 'Contact', id: 'contact' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const isHome = location.pathname === '/';
+  const [active, setActive] = useState('home');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(NAV_ITEMS[i].id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            setActive(NAV_ITEMS[i].id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [open]);
-
-  const handleScrollLink = (name) => {
-    setOpen(false);
-    if (!isHome) {
-      navigate('/');
-      setTimeout(() => {
-        document.getElementById(name.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
-      }, 400);
-    } else {
-      document.getElementById(name.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMobileOpen(false);
   };
 
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-black/95 shadow-[0_4px_30px_rgba(0,0,0,0.6)] h-14'
-            : 'bg-black/70 backdrop-blur-md h-[70px]'
-        } border-b border-white/5`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          height: 64,
+          transition: 'background 300ms ease, border-color 300ms ease',
+          background: scrolled ? 'rgba(0,0,0,0.75)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          borderBottom: scrolled ? '1px solid #171717' : '1px solid transparent',
+        }}
       >
-        <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-          <button onClick={() => handleScrollLink('home')} className="font-black text-xl tracking-widest">
-            <span style={{ WebkitTextStroke: '1px #ef4444', color: 'transparent' }}>DEV</span>
-            <span className="text-white">BYTES</span>
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: '0 auto',
+            padding: '0 24px',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          {/* Logo */}
+          <button
+            onClick={() => scrollTo('home')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+          >
+            <span
+              style={{
+                fontFamily: 'Space Grotesk, Inter, sans-serif',
+                fontWeight: 800,
+                fontSize: 22,
+                letterSpacing: '0.05em',
+              }}
+            >
+              <span style={{ color: '#ef4444' }}>DEV</span>
+              <span style={{ color: '#fff' }}>BYTES</span>
+            </span>
           </button>
 
-          <ul className="hidden md:flex items-center gap-6">
-            {scrollLinks.map((l) => (
-              <li key={l}>
-                <button
-                  onClick={() => handleScrollLink(l)}
-                  className="text-sm text-gray-300 hover:text-red-400 transition-colors font-medium"
-                >
-                  {l}
-                </button>
-              </li>
+          {/* Desktop nav */}
+          <div className="hidden lg:flex items-center">
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '12px 12px',
+                  position: 'relative',
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: 400,
+                  fontSize: 14,
+                  color: active === item.id ? '#ef4444' : '#d4d4d4',
+                  transition: 'color 200ms ease',
+                }}
+                onMouseEnter={(e) => {
+                  if (active !== item.id) e.currentTarget.style.color = '#fff';
+                }}
+                onMouseLeave={(e) => {
+                  if (active !== item.id) e.currentTarget.style.color = '#d4d4d4';
+                }}
+              >
+                {item.label}
+                <span
+                  style={{
+                    position: 'absolute',
+                    bottom: -2,
+                    left: 12,
+                    right: 12,
+                    height: 2,
+                    background: '#ef4444',
+                    transform: active === item.id ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'left',
+                    transition: 'transform 200ms ease',
+                    borderRadius: 9999,
+                  }}
+                />
+              </button>
             ))}
-          </ul>
+          </div>
 
+          {/* Mobile toggle */}
           <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors"
+            className="lg:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#fff', padding: 4 }}
           >
-            <AnimatePresence mode="wait">
-              {open ? (
-                <motion.span
-                  key="x"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <X size={18} className="text-white" />
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <Menu size={18} className="text-white" />
-                </motion.span>
-              )}
-            </AnimatePresence>
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden"
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-xl"
-              onClick={() => setOpen(false)}
-            />
-
-            <motion.div
-              initial={{ x: '100%', opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: '100%', opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="absolute top-0 right-0 h-full w-72 flex flex-col"
-              style={{
-                background: 'linear-gradient(135deg, rgba(20,20,20,0.85) 0%, rgba(10,10,10,0.9) 100%)',
-                backdropFilter: 'blur(40px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(40px) saturate(180%)',
-                borderLeft: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: '-20px 0 60px rgba(0,0,0,0.5)',
-              }}
-            >
-              <div className="flex justify-center pt-5 pb-2">
-                <div className="w-10 h-1 rounded-full bg-white/20" />
-              </div>
-
-              <div className="px-6 py-4 border-b border-white/5">
-                <span className="font-black text-lg tracking-widest">
-                  <span style={{ WebkitTextStroke: '1px #ef4444', color: 'transparent' }}>DEV</span>
-                  <span className="text-white">BYTES</span>
-                </span>
-              </div>
-
-              <nav className="flex-1 overflow-y-auto px-4 py-6">
-                <div className="space-y-1">
-                  {scrollLinks.map((item, i) => (
-                    <motion.div
-                      key={item}
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.04, type: 'spring', stiffness: 300, damping: 25 }}
-                    >
-                      <button
-                        onClick={() => handleScrollLink(item)}
-                        className="w-full text-left px-4 py-3 rounded-xl text-gray-200 hover:text-white hover:bg-white/8 active:bg-white/12 transition-all text-base font-medium flex items-center justify-between group"
-                      >
-                        {item}
-                        <span className="text-gray-600 group-hover:text-red-400 transition-colors text-xs">→</span>
-                      </button>
-                    </motion.div>
-                  ))}
-                </div>
-              </nav>
-
-              <div className="h-16 bg-gradient-to-t from-black/60 to-transparent pointer-events-none absolute bottom-0 left-0 right-0" />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 40,
+            background: 'rgba(0,0,0,0.95)',
+            paddingTop: 80,
+            paddingLeft: 24,
+            paddingRight: 24,
+          }}
+        >
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                style={{
+                  background: active === item.id ? 'rgba(239,68,68,0.1)' : 'transparent',
+                  border: '1px solid',
+                  borderColor: active === item.id ? 'rgba(239,68,68,0.3)' : '#262626',
+                  borderRadius: 8,
+                  padding: '10px 12px',
+                  color: active === item.id ? '#ef4444' : '#d4d4d4',
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: 14,
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   );
 }
