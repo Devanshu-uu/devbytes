@@ -1,70 +1,118 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
-const skills = [
-  { name: 'Python', level: 90, color: 'from-yellow-500 to-orange-500' },
-  { name: 'C Programming', level: 85, color: 'from-blue-500 to-cyan-400' },
-  { name: 'Web Development', level: 75, color: 'from-red-500 to-pink-500' },
-  { name: 'Data Science', level: 70, color: 'from-green-500 to-emerald-400' },
-  { name: 'Machine Learning', level: 60, color: 'from-purple-500 to-violet-400' },
+const SKILL_CATEGORIES = [
+  {
+    title: 'Languages',
+    skills: [
+      { name: 'Python', level: 90 },
+      { name: 'JavaScript', level: 80 },
+      { name: 'HTML/CSS', level: 95 },
+      { name: 'Java', level: 60 },
+      { name: 'SQL', level: 75 },
+    ],
+  },
+  {
+    title: 'Frameworks & Tools',
+    skills: [
+      { name: 'React', level: 75 },
+      { name: 'Node.js', level: 65 },
+      { name: 'Tailwind CSS', level: 90 },
+      { name: 'Git & GitHub', level: 80 },
+      { name: 'VS Code', level: 95 },
+    ],
+  },
+  {
+    title: 'Data & AI',
+    skills: [
+      { name: 'Pandas', level: 85 },
+      { name: 'NumPy', level: 80 },
+      { name: 'Matplotlib', level: 75 },
+      { name: 'Scikit-learn', level: 60 },
+      { name: 'Power BI', level: 70 },
+    ],
+  },
 ];
 
-const techStack = ['Python', 'HTML', 'CSS', 'JavaScript', 'Pandas', 'NumPy', 'Matplotlib', 'Git', 'VS Code', 'Jupyter'];
+function SkillBar({ name, level, delay }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.5 }}
+      className="group"
+    >
+      <div className="flex justify-between items-baseline mb-2">
+        <span className="font-mono text-sm text-white">{name}</span>
+        <span className="font-mono text-[10px] text-gray-500">{level}%</span>
+      </div>
+
+      <div className="h-px bg-white/10 relative overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${level}%` }}
+          viewport={{ once: true }}
+          transition={{ delay: delay + 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-0 left-0 h-full bg-red-500"
+        />
+      </div>
+    </motion.div>
+  );
+}
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 px-6 bg-[#07070a]">
-      <div className="max-w-4xl mx-auto">
+    <section id="skills" className="relative py-32 px-6 lg:px-12 bg-[#0d0d0f]">
+      {/* Vertical accent line */}
+      <div className="absolute top-0 left-[8.33%] w-px h-full bg-white/10 hidden lg:block" />
+
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="mb-4"
         >
-          <p className="text-red-500 text-xs font-bold tracking-[0.3em] uppercase mb-3">What I Know</p>
-          <h2 className="text-4xl font-black">Technical <span className="text-red-500">Skills</span></h2>
+          <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-gray-500">
+            Technical Proficiency
+          </span>
         </motion.div>
 
-        <div className="space-y-6 mb-14">
-          {skills.map((s, i) => (
-            <motion.div
-              key={s.name}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-semibold text-gray-200">{s.name}</span>
-                <span className="text-xs text-red-400 font-bold">{s.level}%</span>
-              </div>
-              <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${s.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: i * 0.1, ease: 'easeOut' }}
-                  className={`h-full rounded-full bg-gradient-to-r ${s.color}`}
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="font-serif text-4xl md:text-6xl text-white mb-16"
         >
-          <p className="text-center text-gray-500 text-xs font-bold tracking-widest uppercase mb-5">Tech Stack</p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {techStack.map((t) => (
-              <span key={t} className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300 hover:border-red-500/40 hover:text-red-300 transition-colors cursor-default">
-                {t}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+          Skills
+        </motion.h2>
+
+        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+          {SKILL_CATEGORIES.map((category, catIdx) => (
+            <div key={category.title}>
+              <motion.h3
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="font-mono text-xs tracking-[0.2em] uppercase text-red-400 mb-8 pb-3 border-b border-red-500/20"
+              >
+                {category.title}
+              </motion.h3>
+
+              <div className="space-y-6">
+                {category.skills.map((skill, skillIdx) => (
+                  <SkillBar
+                    key={skill.name}
+                    name={skill.name}
+                    level={skill.level}
+                    delay={catIdx * 0.1 + skillIdx * 0.05}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
