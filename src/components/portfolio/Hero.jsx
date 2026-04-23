@@ -194,9 +194,7 @@ export default function Hero() {
               }}
               className="mx-auto lg:mx-0"
             >
-              I build responsive web experiences, data-driven dashboards, and practical
-              AI projects. I’m focused on creating work that looks strong, solves real
-              problems, and helps me grow into a high-value developer.
+              A student, creator, and aspiring developer building useful digital projects.
             </p>
 
             <div
