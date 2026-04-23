@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { X, BadgeCheck } from 'lucide-react';
+import { a } from 'framer-motion/client';
 
 const CERTS = [
   { title: 'GeoGebra Training', issuer: 'IIT Bombay', category: 'Technical', image: 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/e3658b534_1111.jpg' },
   { title: 'Arduino Training', issuer: 'IIT Bombay', category: 'Technical', image: 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/fd390b929_11112.jpg' },
   { title: 'Java Bootcamp', issuer: 'LetsUpgrade', category: 'Programming', image: 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/b761f22b4_LUEJAVAAUG1254001_page-0001.jpg' },
   { title: 'Python Bootcamp', issuer: 'LetsUpgrade', category: 'Programming', image: 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/300216592_python_page-0001.jpg' },
+  { title: 'Analytical Tools and Techniques', issuer: 'University of Delhi', category: 'Science', image: '/chemistry.jpg' },
 ];
 
-const TABS = ['Technical', 'Programming'];
+const TABS = ['Science','Technical', 'Programming'];
 
 export default function Certificates() {
   const [modal, setModal] = useState(null);
-  const [activeTab, setActiveTab] = useState('Technical');
+  const [activeTab, setActiveTab] = useState('Science');
   const filtered = CERTS.filter(c => c.category === activeTab);
 
   return (
