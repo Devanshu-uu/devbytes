@@ -13,7 +13,7 @@ const LINKS = [
 ];
 
 const SOCIALS = [
-  { label: 'GitHub', href: 'https://github.com/Devanshu-uu/devbytes', icon: Github },
+  { label: 'GitHub', href: 'https://github.com/Devanshu-uu', icon: Github },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/devanshu-mohriya', icon: Linkedin },
   { label: 'Email', href: 'mailto:devanshumohriya@gmail.com', icon: Mail },
 ];
