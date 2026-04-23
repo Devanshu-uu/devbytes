@@ -43,7 +43,7 @@ export default function Skills() {
         <p className="kicker">WHAT I KNOW</p>
         <h2 className="section-title">Technical <span style={{ color: '#ef4444' }}>Skills</span></h2>
 
-        <div ref__={ref} style={{ marginTop: 48, display: 'grid', gap: 32 }} className="md:grid-cols-2 grid">
+        <div ref={ref} style={{ marginTop: 48, display: 'grid', gap: 32 }} className="md:grid-cols-2 grid">
           <div className="card-dark" style={{ padding: 28 }}>
             {SKILLS.map((s) => <SkillBar key={s.name} name={s.name} pct={s.pct} animate={animate} />)}
           </div>
