@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Mail, Download, ChevronDown, Sparkles } from 'lucide-react';
+import { Users, Download, ChevronDown, Sparkles } from 'lucide-react';
 
 const ROLES = ['Web Developer', 'Data Analyst', 'AI Enthusiast', 'Content Creator'];
 
@@ -29,176 +29,69 @@ export default function Hero() {
   return (
     <section id="home" style={{
       minHeight: '100vh', display: 'flex', alignItems: 'center',
-      position: 'relative', overflow: 'hidden',
-      background: '#0a0a0a',
+      position: 'relative', overflow: 'hidden', background: '#0a0a0a',
     }}>
-      {/* BG layer 1: radial glow */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse at center, rgba(239,68,68,0.18) 0%, rgba(239,68,68,0.04) 35%, transparent 65%)',
-      }} />
-      {/* BG layer 2: top-left blob */}
-      <div style={{
-        position: 'absolute', width: 700, height: 700, borderRadius: '50%',
-        background: 'rgba(220,38,38,0.15)', filter: 'blur(140px)',
-        top: -160, left: -160, zIndex: 0, pointerEvents: 'none',
-      }} />
-      {/* BG layer 3: bottom-right blob */}
-      <div style={{
-        position: 'absolute', width: 700, height: 700, borderRadius: '50%',
-        background: 'rgba(239,68,68,0.10)', filter: 'blur(160px)',
-        bottom: -160, right: -160, zIndex: 0, pointerEvents: 'none',
-      }} />
-      {/* BG layer 4: grid */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.04,
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
-        backgroundSize: '56px 56px',
-        maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 75%)',
-        WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 75%)',
-      }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'radial-gradient(ellipse at center, rgba(239,68,68,0.18) 0%, rgba(239,68,68,0.04) 35%, transparent 65%)' }} />
+      <div style={{ position: 'absolute', width: 700, height: 700, borderRadius: '50%', background: 'rgba(220,38,38,0.15)', filter: 'blur(140px)', top: -160, left: -160, zIndex: 0, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', width: 700, height: 700, borderRadius: '50%', background: 'rgba(239,68,68,0.10)', filter: 'blur(160px)', bottom: -160, right: -160, zIndex: 0, pointerEvents: 'none' }} />
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1280, margin: '0 auto', padding: '112px 24px 64px', width: '100%' }}>
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* LEFT: text — order-2 on mobile */}
+
           <div className="order-2 lg:order-1 text-center lg:text-left">
-            {/* Pill badge */}
             <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '6px 14px', borderRadius: 9999,
-              border: '1px solid rgba(239,68,68,0.30)',
-              background: 'rgba(239,68,68,0.10)',
-              color: '#f87171', fontSize: 12, fontWeight: 600,
-              letterSpacing: '0.2em', textTransform: 'uppercase',
+              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 9999,
+              border: '1px solid rgba(239,68,68,0.30)', background: 'rgba(239,68,68,0.10)',
+              color: '#f87171', fontSize: 12, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase',
             }}>
-              <Sparkles size={13} />
-              WELCOME TO MY PORTFOLIO
+              <Sparkles size={13} /> WELCOME TO MY PORTFOLIO
             </div>
 
-            {/* Main heading */}
             <div style={{ marginTop: 24, lineHeight: 0.95, letterSpacing: '-0.01em' }}>
-              <div style={{
-                fontFamily: 'Space Grotesk, Inter, sans-serif', fontWeight: 800,
-                fontSize: 'clamp(48px, 8vw, 72px)',
-                color: '#fafafa',
-              }}>
-                Hi, I'm
-              </div>
-              <div style={{
-                fontFamily: 'Space Grotesk, Inter, sans-serif', fontWeight: 800,
-                fontSize: 'clamp(60px, 10vw, 92px)',
-                background: 'linear-gradient(to right, #ef4444, #f87171, #dc2626)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                DEVANSHU
-              </div>
+              <div style={{ fontFamily: 'Space Grotesk, Inter, sans-serif', fontWeight: 1000, fontSize: 'clamp(90px, 10vw, 72px)', color: '#fafafa' }}>Hi, I'm</div>
+              <div style={{ fontFamily: 'Space Grotesk, Inter, sans-serif', fontWeight: 800, fontSize: 'clamp(60px, 10vw, 92px)', background: 'linear-gradient(to right, #ef4444, #f87171, #dc2626)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>DEVANSHU</div>
             </div>
 
-            {/* Typewriter */}
             <div className="flex items-center justify-center lg:justify-start" style={{ marginTop: 20, height: 40 }}>
               <span style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 500, color: '#d4d4d4', whiteSpace: 'nowrap' }}>I'm a&nbsp;</span>
               <span style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 700, color: '#ef4444' }}>{text}</span>
               <span className="caret" style={{ flexShrink: 0 }} />
             </div>
 
-            {/* Description */}
-            <p style={{
-              marginTop: 24, maxWidth: 576, fontSize: 'clamp(15px, 2vw, 18px)',
-              color: '#a3a3a3', lineHeight: 1.625,
-            }} className="mx-auto lg:mx-0">
+            <p style={{ marginTop: 24, maxWidth: 576, fontSize: 'clamp(15px, 2vw, 18px)', color: '#a3a3a3', lineHeight: 1.625 }} className="mx-auto lg:mx-0">
               BSc Life Science @ Delhi University. Passionate about Web Development, Data Science & AI. Building cool things and sharing the journey on YouTube.
             </p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start" style={{ marginTop: 36, gap: 12 }}>
-              <button className="btn-red" onClick={() => scrollTo('socials')} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                <Users size={18} /> My Socials
-              </button>
-              <a href="#" className="btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                <Download size={18} /> Resume
-              </a>
+              <button className="btn-red" onClick={() => scrollTo('socials')}><Users size={18} /> My Socials</button>
+              <a href__="#" className="btn-ghost"><Download size={18} /> Resume</a>
             </div>
 
-            {/* Stats */}
-            <div style={{
-              marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: 16, maxWidth: 512,
-            }} className="mx-auto lg:mx-0">
-              {[
-                { num: '10+', label: 'Projects' },
-                { num: '5+', label: 'Certificates' },
-              ].map((s) => (
+            <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, maxWidth: 512 }} className="mx-auto lg:mx-0">
+              {[{ num: '10+', label: 'Projects' }, { num: '5+', label: 'Certificates' }].map((s) => (
                 <div key={s.label} style={{ borderLeft: '2px solid rgba(239,68,68,0.5)', paddingLeft: 12 }}>
-                  <div style={{
-                    fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700,
-                    fontSize: 'clamp(22px, 3vw, 30px)', color: '#fff',
-                  }}>{s.num}</div>
-                  <div style={{
-                    fontSize: 12, fontWeight: 400, textTransform: 'uppercase',
-                    letterSpacing: '0.08em', color: '#737373', marginTop: 2,
-                  }}>{s.label}</div>
+                  <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: 'clamp(22px, 3vw, 30px)', color: '#fff' }}>{s.num}</div>
+                  <div style={{ fontSize: 12, fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#737373', marginTop: 2 }}>{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* RIGHT: photo — order-1 on mobile */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <div style={{ position: 'relative', display: 'inline-block' }}>
-              {/* Red aura */}
-              <div style={{
-                position: 'absolute', inset: -40, borderRadius: '50%',
-                background: 'rgba(239,68,68,0.25)', filter: 'blur(48px)',
-                zIndex: 0,
-              }} />
-              {/* Conic rotating ring */}
-              <div style={{
-                position: 'absolute', inset: -12, borderRadius: '50%',
-                background: 'conic-gradient(from 0deg, #ef4444, transparent 40%, #ef4444 70%, transparent)',
-                animation: 'spin-slow 8s linear infinite',
-                opacity: 0.7, filter: 'blur(2px)', zIndex: 1,
-              }} />
-
-              {/* Photo */}
+              <div style={{ position: 'absolute', inset: -40, borderRadius: '50%', background: 'rgba(239,68,68,0.25)', filter: 'blur(48px)', zIndex: 0 }} />
+              <div style={{ position: 'absolute', inset: -12, borderRadius: '50%', background: 'conic-gradient(from 0deg, #ef4444, transparent 40%, #ef4444 70%, transparent)', animation: 'spin-slow 8s linear infinite', opacity: 0.7, filter: 'blur(2px)', zIndex: 1 }} />
               <div style={{ position: 'relative', zIndex: 2 }}>
                 <img
                   src="https://media.base44.com/images/public/69e7db94b9a2cf455facb7a3/59956e456_PhotoFixerBot_07-41-20_UTC.jpg"
                   alt="Devanshu"
-                  style={{
-                    width: 'clamp(280px, 35vw, 440px)',
-                    height: 'clamp(280px, 35vw, 440px)',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    boxShadow: '0 0 0 4px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.05), 0 0 80px rgba(239,68,68,0.45)',
-                  }}
+                  style={{ width: 'clamp(280px, 35vw, 440px)', height: 'clamp(280px, 35vw, 440px)', borderRadius: '50%', objectFit: 'cover', display: 'block', boxShadow: '0 0 0 4px rgba(0,0,0,0.6), 0 0 80px rgba(239,68,68,0.45)' }}
                 />
-
-                {/* Chip: Available for work */}
-                <div className="hidden md:flex" style={{
-                  position: 'absolute', left: -24, top: 40,
-                  alignItems: 'center', gap: 8,
-                  padding: '8px 12px', borderRadius: 12,
-                  background: 'rgba(23,23,23,0.9)', backdropFilter: 'blur(8px)',
-                  border: '1px solid #262626',
-                  boxShadow: '0 20px 25px -5px rgba(0,0,0,0.4)',
-                }}>
-                  <div style={{
-                    width: 8, height: 8, borderRadius: '50%',
-                    background: '#22c55e', animation: 'pulse 2s infinite',
-                  }} className="animate-pulse" />
+                <div className="hidden md:flex" style={{ position: 'absolute', left: -24, top: 40, alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 12, background: 'rgba(23,23,23,0.9)', backdropFilter: 'blur(8px)', border: '1px solid #262626' }}>
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} className="animate-pulse" />
                   <span style={{ fontSize: 12, fontWeight: 500, color: '#e5e5e5' }}>Available for work</span>
                 </div>
-
-                {/* Chip: Based in */}
-                <div className="hidden md:block" style={{
-                  position: 'absolute', right: -16, bottom: 48,
-                  padding: '8px 12px', borderRadius: 12,
-                  background: 'rgba(23,23,23,0.9)', backdropFilter: 'blur(8px)',
-                  border: '1px solid #262626',
-                  boxShadow: '0 20px 25px -5px rgba(0,0,0,0.4)',
-                }}>
+                <div className="hidden md:block" style={{ position: 'absolute', right: -16, bottom: 48, padding: '8px 12px', borderRadius: 12, background: 'rgba(23,23,23,0.9)', backdropFilter: 'blur(8px)', border: '1px solid #262626' }}>
                   <div style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#ef4444' }}>BASED IN</div>
                   <div style={{ fontSize: 14, fontWeight: 600, color: '#fff', marginTop: 2 }}>Delhi, India</div>
                 </div>
@@ -207,14 +100,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div style={{ marginTop: 56, display: 'flex', justifyContent: 'center' }}>
-          <button
-            onClick={() => scrollTo('about')}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#737373', transition: 'color 180ms ease' }}
+          <button onClick={() => scrollTo('about')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#737373' }}
             onMouseEnter={e => e.currentTarget.style.color = '#ef4444'}
-            onMouseLeave={e => e.currentTarget.style.color = '#737373'}
-          >
+            onMouseLeave={e => e.currentTarget.style.color = '#737373'}>
             <ChevronDown size={26} className="animate-bounce-scroll" />
           </button>
         </div>

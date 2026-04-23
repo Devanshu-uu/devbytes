@@ -1,52 +1,35 @@
-import React from "react";
+import React from 'react';
 
-const projects = [
-  {
-    title: "Portfolio Website",
-    desc: "Modern portfolio built using React & Tailwind.",
-  },
-  {
-    title: "Data Analysis Project",
-    desc: "Analyzed datasets using Python & Pandas.",
-  },
-  {
-    title: "YouTube Automation",
-    desc: "Created content workflow for gaming videos.",
-  },
-];
-
-export default function Projects() {
+export default function About() {
   return (
-    <section id="projects" style={{ background: "#0a0a0a", padding: "96px 24px" }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-        
-        <p style={{ color: "#737373", letterSpacing: "2px", fontSize: 12 }}>
-          MY WORK
-        </p>
+    <section id="about" style={{ background: '#0a0a0a', padding: '96px 24px' }}>
+      <div style={{ maxWidth: 1120, margin: '0 auto' }}>
+        <p className="kicker">WHO AM I</p>
+        <h2 className="section-title">About <span style={{ color: '#ef4444' }}>Me</span></h2>
 
-        <h2 style={{ fontSize: 36, color: "white", marginTop: 10 }}>
-          My <span style={{ color: "#ef4444" }}>Projects</span>
-        </h2>
-
-        <div style={{
-          marginTop: 50,
-          display: "grid",
-          gap: 20
-        }}>
-          {projects.map((p, i) => (
-            <div key={i} style={{
-              padding: 20,
-              borderRadius: 12,
-              border: "1px solid #262626",
-              background: "linear-gradient(135deg, #1a1a1a, #0f0f0f)",
-              transition: "0.3s"
-            }}>
-              <h3 style={{ color: "white", marginBottom: 10 }}>{p.title}</h3>
-              <p style={{ color: "#a3a3a3" }}>{p.desc}</p>
+        <div style={{ marginTop: 56, display: 'grid', gap: 48 }} className="md:grid-cols-2 grid">
+          <div style={{ position: 'relative' }}>
+            <div style={{ position: 'absolute', inset: -24, borderRadius: '50%', background: 'rgba(239,68,68,0.10)', filter: 'blur(48px)' }} />
+            <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div style={{ aspectRatio: '3/4', borderRadius: 16, overflow: 'hidden', border: '1px solid #262626', transform: 'translateY(16px)' }}>
+                <img src="https://media.base44.com/images/public/69bdc87402b020b7249e66f1/e610270b3_file_00000000aff071fd8f89a7b6446d0bc7.png" alt="Devanshu" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div style={{ aspectRatio: '3/4', borderRadius: 16, overflow: 'hidden', border: '1px solid #262626', transform: 'translateY(-16px)', background: 'linear-gradient(135deg, rgba(239,68,68,0.05), rgba(239,68,68,0.15))' }} />
             </div>
-          ))}
-        </div>
+          </div>
 
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <p style={{ fontSize: 16, color: '#d4d4d4', lineHeight: 1.625, marginBottom: 16 }}>
+              I'm Devanshu, currently pursuing BSc Life Science at Delhi University. Alongside my studies, I'm deeply passionate about Web Development, Data Science, and Artificial Intelligence.
+            </p>
+            <p style={{ fontSize: 16, color: '#d4d4d4', lineHeight: 1.625, marginBottom: 16 }}>
+              I build projects using Python and the modern web stack, exploring data-driven technologies while sharing my journey on YouTube.
+            </p>
+            <p style={{ fontSize: 16, color: '#d4d4d4', lineHeight: 1.625 }}>
+              Whether it's crafting clean UIs, diving into datasets, or experimenting with ML models — I'm always building, always learning.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

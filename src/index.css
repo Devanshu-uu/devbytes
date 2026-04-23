@@ -1,43 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* custom classes (important) */
-body {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  background: #0a0a0a;
-  color: white;
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #0a0a0a;
+    color: #fafafa;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
+html { scroll-behavior: smooth; }
+
+.font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+
+::selection { background: #ef4444; color: #fff; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #ef4444; }
+
 .kicker {
+  color: #ef4444;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  font-weight: 600;
+  text-transform: uppercase;
   text-align: center;
-  color: #737373;
-  font-size: 12px;
-  letter-spacing: 2px;
 }
 
 .section-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
   text-align: center;
-  font-size: 36px;
-  color: white;
+  margin-top: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 .card-dark {
-  background: #111;
-  border: 1px solid #262626;
-  border-radius: 12px;
+  background: linear-gradient(180deg, #141414 0%, #0f0f0f 100%);
+  border: 1px solid #1f1f1f;
+  border-radius: 18px;
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
+.card-dark:hover {
+  border-color: rgba(239,68,68,0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -20px rgba(239,68,68,0.25);
+}
+
+.btn-red {
+  background: #ef4444;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-red:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px -10px rgba(239,68,68,0.6);
+}
+
+.btn-ghost {
+  background: #141414;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid #262626;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 180ms ease, transform 180ms ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-ghost:hover { border-color: #ef4444; transform: translateY(-1px); }
 
 .filter-pill {
-  padding: 8px 16px;
-  border-radius: 999px;
+  padding: 8px 22px;
+  border-radius: 9999px;
   border: 1px solid #262626;
-  color: white;
   background: #111;
+  color: #d4d4d4;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 180ms, color 180ms, border-color 180ms;
   cursor: pointer;
 }
+.filter-pill:hover { border-color: #ef4444; color: #fff; }
+.filter-pill.active { background: #ef4444; border-color: #ef4444; color: #fff; }
 
-.filter-pill.active {
-  background: #ef4444;
+.tech-chip {
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: #141414;
+  border: 1px solid #262626;
+  color: #e5e5e5;
+  font-size: 13px;
+  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+  cursor: default;
 }
+.tech-chip:hover { transform: translateY(-2px); border-color: #ef4444; color: #fff; }
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #ef4444;
+  margin-left: 4px;
+  animation: blink 1s steps(1) infinite;
+  vertical-align: -2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+
+@keyframes bounce-scroll {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.animate-bounce-scroll { animation: bounce-scroll 1.5s ease-in-out infinite; }
