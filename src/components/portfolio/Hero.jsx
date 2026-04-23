@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Download, ChevronDown, Sparkles, Briefcase, FolderKanban } from 'lucide-react';
 
-const ROLES = ['Web Developer', 'Data Analyst', 'AI Enthusiast', 'Content Creator'];
+const ROLES = ['Data Analyst', 'AI Enthusiast'];
 
 export default function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
