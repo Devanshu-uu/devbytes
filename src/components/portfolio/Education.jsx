@@ -119,10 +119,10 @@ export default function Education() {
           My academic path that has shaped my knowledge and skills
         </p>
 
-        <div ref__={sectionRef} style={{ position: 'relative', marginTop: 64 }}>
+        <div ref={sectionRef} style={{ position: 'relative', marginTop: 64 }}>
 
           {/* Desktop center line */}
-          <div className="hidden md:block" ref__={lineRef} style={{
+          <div className="hidden md:block" ref={lineRef} style={{
             position: 'absolute', left: '50%', top: 0,
             width: 2, transform: 'translateX(-50%)',
             height: '100%', background: '#1a1a1a',
@@ -164,14 +164,14 @@ export default function Education() {
                       width: 'calc(50% - 24px)', textAlign: 'right',
                       paddingRight: 48,
                       display: 'flex', flexDirection: 'column', alignItems: 'flex-end',
-                      paddingTop: idx % 2 === 0 ? 18 : 8,
+                      paddingTop: idx % 2 === 0 ? 8 : 18,
                       opacity: cardVisible ? 1 : 0,
                       transform: cardVisible ? 'translateX(0)' : 'translateX(-20px)',
                       transition: 'opacity 500ms ease, transform 500ms ease',
                     }}>
                       {idx % 2 === 0
-                        ? <span style={{ fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ef4444' }}>{entry.period}</span>
-                        : <EntryCard entry={entry} />}
+                        ? <EntryCard entry={entry} />
+                        : <span style={{ fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ef4444' }}>{entry.period}</span>}
                     </div>
 
                     {/* Dot */}
@@ -189,14 +189,14 @@ export default function Education() {
                     <div style={{
                       width: 'calc(50% - 24px)',
                       paddingLeft: 48,
-                      paddingTop: idx % 2 === 0 ? 8 : 18,
+                      paddingTop: idx % 2 === 0 ? 18 : 8,
                       opacity: cardVisible ? 1 : 0,
                       transform: cardVisible ? 'translateX(0)' : 'translateX(20px)',
                       transition: 'opacity 500ms ease, transform 500ms ease',
                     }}>
                       {idx % 2 === 0
-                        ? <EntryCard entry={entry} />
-                        : <span style={{ fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ef4444' }}>{entry.period}</span>}
+                        ? <span style={{ fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ef4444' }}>{entry.period}</span>
+                        : <EntryCard entry={entry} />}
                     </div>
                   </div>
 

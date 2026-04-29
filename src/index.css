@@ -4,20 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: #0a0a0a;
-    color: #fafafa;
-    font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0a0a0a;
+  color: #fafafa;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 html { scroll-behavior: smooth; }
-
-.font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
 
 ::selection { background: #ef4444; color: #fff; }
 
@@ -42,6 +38,7 @@ html { scroll-behavior: smooth; }
   margin-top: 12px;
   letter-spacing: -0.01em;
   line-height: 1.1;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
 }
 
 .card-dark {
@@ -142,3 +139,26 @@ html { scroll-behavior: smooth; }
   50% { transform: translateY(6px); }
 }
 .animate-bounce-scroll { animation: bounce-scroll 1.5s ease-in-out infinite; }
+
+/* Blog markdown styles */
+.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+  color: #fff; font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700; margin: 2em 0 0.5em; line-height: 1.2;
+}
+.blog-content h1 { font-size: 2em; }
+.blog-content h2 { font-size: 1.5em; border-bottom: 1px solid #1f1f1f; padding-bottom: 0.3em; }
+.blog-content h3 { font-size: 1.2em; color: #ef4444; }
+.blog-content p { margin: 1em 0; }
+.blog-content a { color: #ef4444; text-decoration: underline; }
+.blog-content code {
+  background: #1a1a1a; border: 1px solid #262626; border-radius: 4px;
+  padding: 2px 6px; font-size: 0.9em; color: #f87171;
+}
+.blog-content pre { background: #111; border: 1px solid #1f1f1f; border-radius: 10px; padding: 20px; overflow-x: auto; margin: 1.5em 0; }
+.blog-content pre code { background: none; border: none; padding: 0; color: #e5e5e5; }
+.blog-content ul, .blog-content ol { padding-left: 1.5em; margin: 1em 0; }
+.blog-content li { margin: 0.4em 0; }
+.blog-content blockquote { border-left: 3px solid #ef4444; padding-left: 16px; color: #a3a3a3; font-style: italic; margin: 1.5em 0; }
+.blog-content img { max-width: 100%; border-radius: 10px; margin: 1.5em 0; }
+.blog-content strong { color: #fff; font-weight: 700; }
+.blog-content hr { border: none; border-top: 1px solid #1f1f1f; margin: 2em 0; }

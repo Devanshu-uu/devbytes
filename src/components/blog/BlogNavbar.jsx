@@ -1,76 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Terminal } from 'lucide-react';
 
 export default function BlogNavbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
-
-  const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Blog', href: '/blog' },
-  ];
-
   return (
-    <>
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-[0_4px_30px_rgba(0,0,0,0.6)]' : ''}`}
-        style={{
-          background: scrolled ? 'rgba(13,17,23,0.98)' : 'rgba(13,17,23,0.85)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid #21262d',
-          height: scrolled ? '56px' : '68px',
-        }}>
-        <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-          <Link to="/" className="font-black text-xl tracking-widest" style={{ textDecoration: 'none' }}>
-            <span style={{ WebkitTextStroke: '1px #f85149', color: 'transparent' }}>DEV</span>
-            <span style={{ color: '#e6edf3' }}>BYTES</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0d1117]/80 backdrop-blur-md border-b border-[#30363d]">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="w-8 h-8 bg-[#f85149] rounded-lg flex items-center justify-center text-white group-hover:rotate-12 transition-transform">
+            <Terminal size={18} />
+          </div>
+          <span className="font-black text-xl tracking-tight hidden sm:block">
+            Dev<span className="text-[#f85149]">Bytes</span>
+          </span>
+        </Link>
+
+        <div className="flex items-center gap-6">
+          <Link to="/blog" className="text-sm font-bold text-[#f85149]">
+            Blog
           </Link>
-
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map(l => (
-              <li key={l.label}>
-                <Link to={l.href}
-                  className="text-sm font-medium tracking-wide transition-colors"
-                  style={{
-                    color: location.pathname === l.href ? '#f85149' : '#8b949e',
-                    textDecoration: 'none',
-                  }}
-                  onMouseEnter={e => e.target.style.color = '#f85149'}
-                  onMouseLeave={e => e.target.style.color = location.pathname === l.href ? '#f85149' : '#8b949e'}
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <button onClick={() => setOpen(!open)} className="md:hidden" style={{ color: '#e6edf3' }}>
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <Link to="/" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
+            Portfolio
+          </Link>
+          <Link to="/#socials" className="px-4 py-2 rounded-lg bg-[#161b22] border border-[#30363d] text-xs font-bold hover:border-[#f85149] transition-all">
+            Get in Touch
+          </Link>
         </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <div className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 transition-all duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-        style={{ background: 'rgba(13,17,23,0.99)' }}>
-        {navLinks.map(l => (
-          <Link key={l.label} to={l.href} onClick={() => setOpen(false)}
-            className="text-2xl font-bold transition-colors"
-            style={{ color: '#e6edf3', textDecoration: 'none' }}
-            onMouseEnter={e => e.target.style.color = '#f85149'}
-            onMouseLeave={e => e.target.style.color = '#e6edf3'}
-          >
-            {l.label}
-          </Link>
-        ))}
       </div>
-    </>
+    </nav>
   );
 }

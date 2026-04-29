@@ -29,7 +29,7 @@ export default function Socials() {
         <h2 className="section-title">Connect <span style={{ color: '#ef4444' }}>With Me</span></h2>
 
         <div style={{ marginTop: 40, maxWidth: 560, margin: '40px auto 0' }}>
-          <a href__="mailto:devanshumohriya@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 28px', borderRadius: 16, background: '#141414', border: '1px solid #262626', textDecoration: 'none', transition: 'border-color 200ms ease' }}
+          <a href="mailto:devanshumohriya@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 28px', borderRadius: 16, background: '#141414', border: '1px solid #262626', textDecoration: 'none', transition: 'border-color 200ms ease' }}
             onMouseEnter={e => e.currentTarget.style.borderColor = '#ef4444'}
             onMouseLeave={e => e.currentTarget.style.borderColor = '#262626'}>
             <div style={{ width: 52, height: 52, borderRadius: 14, flexShrink: 0, background: 'linear-gradient(135deg, #ef4444, #dc2626)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 8px 20px rgba(239,68,68,0.3)' }}>
@@ -44,7 +44,7 @@ export default function Socials() {
 
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 32 }}>
           {SOCIALS.map(({ label, Icon, grad, href }) => (
-            <a key={label} href__={href} target="_blank" rel="noopener noreferrer" title={label}
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label}
               style={{ width: 52, height: 52, borderRadius: 14, background: grad, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', textDecoration: 'none', boxShadow: '0 8px 20px rgba(0,0,0,0.3)', transition: 'transform 200ms ease, box-shadow 200ms ease', flexShrink: 0 }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.12)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}>

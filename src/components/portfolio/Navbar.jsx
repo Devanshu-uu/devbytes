@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const NAV_ITEMS = [
   { label: 'Home', id: 'home' },
@@ -8,7 +9,8 @@ const NAV_ITEMS = [
   { label: 'Education', id: 'education' },
   { label: 'Certificates', id: 'certificates' },
   { label: 'Projects', id: 'projects' },
-  { label: 'Contact', id: 'socials' },
+  { label: 'Blog', id: 'blog-section' },
+  { label: 'Contacts', id: 'socials' },
 ];
 
 export default function Navbar() {
@@ -18,19 +20,36 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-      for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
-        const el = document.getElementById(NAV_ITEMS[i].id);
+      const scrollPos = window.scrollY;
+      setScrolled(scrollPos > 40);
+      
+      const windowHeight = window.innerHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
+      
+      // If we are at the very bottom, always select the last item
+      if (scrollPos + windowHeight >= scrollHeight - 10) {
+        setActive('socials');
+        return;
+      }
+
+      let current = 'home';
+      // Find the section that currently occupies the most of the upper viewport
+      for (const item of NAV_ITEMS) {
+        const el = document.getElementById(item.id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            setActive(NAV_ITEMS[i].id);
-            break;
+          // A section is considered active if its top is in the upper part of the screen
+          // or if it covers the 100px mark from the top
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            current = item.id;
           }
         }
       }
+      setActive(current);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+    // Initial check
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -51,8 +70,7 @@ export default function Navbar() {
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <button onClick={() => scrollTo('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             <span style={{ fontFamily: 'Space Grotesk, Inter, sans-serif', fontWeight: 800, fontSize: 27, letterSpacing: '0.05em' }}>
-              <span style={{ color: '#ef4444' }}>DEV</span>
-              <span style={{ color: '#fff' }}>BYTES</span>
+              <span style={{ color: '#ef4444' }}>DEV</span><span style={{ color: '#fff' }}>BYTES</span>
             </span>
           </button>
 
@@ -73,9 +91,7 @@ export default function Navbar() {
                   position: 'absolute', bottom: -2, left: 12, right: 12, height: 2,
                   background: '#ef4444',
                   transform: active === item.id ? 'scaleX(1)' : 'scaleX(0)',
-                  transformOrigin: 'left',
-                  transition: 'transform 200ms ease',
-                  borderRadius: 9999,
+                  transformOrigin: 'left', transition: 'transform 200ms ease', borderRadius: 9999,
                 }} />
               </button>
             ))}
@@ -89,11 +105,7 @@ export default function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 40,
-          background: 'rgba(0,0,0,0.95)',
-          paddingTop: 80, paddingLeft: 24, paddingRight: 24,
-        }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(0,0,0,0.95)', paddingTop: 80, paddingLeft: 24, paddingRight: 24 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             {NAV_ITEMS.map((item) => (
               <button key={item.id} onClick={() => scrollTo(item.id)} style={{

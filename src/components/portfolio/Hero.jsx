@@ -211,7 +211,7 @@ export default function Hero() {
 
               <button
                 className="btn-ghost"
-                onClick={() => scrollTo('contact')}
+                onClick={() => scrollTo('socials')}
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
               >
                 <Briefcase size={18} /> Hire Me

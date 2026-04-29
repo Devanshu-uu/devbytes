@@ -29,10 +29,7 @@ export default function Skills() {
   const ref = useRef(null);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setAnimate(true); obs.disconnect(); } },
-      { threshold: 0.2 }
-    );
+    const obs = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setAnimate(true); obs.disconnect(); } }, { threshold: 0.2 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
@@ -42,7 +39,6 @@ export default function Skills() {
       <div style={{ maxWidth: 1024, margin: '0 auto' }}>
         <p className="kicker">WHAT I KNOW</p>
         <h2 className="section-title">Technical <span style={{ color: '#ef4444' }}>Skills</span></h2>
-
         <div ref={ref} style={{ marginTop: 48, display: 'grid', gap: 32 }} className="md:grid-cols-2 grid">
           <div className="card-dark" style={{ padding: 28 }}>
             {SKILLS.map((s) => <SkillBar key={s.name} name={s.name} pct={s.pct} animate={animate} />)}

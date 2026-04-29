@@ -1,63 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Youtube, Linkedin } from 'lucide-react';
-
-const sections = [
-  {
-    title: 'Main',
-    links: [
-      { label: 'Home', href: '/' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Contact', href: '/#contact' },
-    ],
-  },
-  {
-    title: 'Learn',
-    links: [
-      { label: 'Projects', href: '/#projects' },
-      { label: 'YouTube', href: '/#youtube' },
-      { label: 'Skills', href: '/#skills' },
-    ],
-  },
-  {
-    title: 'Social',
-    links: [
-      { label: 'GitHub', href: '#', icon: <Github size={13} /> },
-      { label: 'Twitter (X)', href: '#', icon: <Twitter size={13} /> },
-      { label: 'YouTube', href: '#', icon: <Youtube size={13} /> },
-      { label: 'LinkedIn', href: '#', icon: <Linkedin size={13} /> },
-    ],
-  },
-];
+import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 export default function BlogFooter() {
   return (
-    <footer style={{ background: '#0d1117', borderTop: '1px solid #21262d' }}>
-      <div className="max-w-7xl mx-auto px-6 pt-12 pb-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-10">
-          {sections.map(s => (
-            <div key={s.title}>
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#8b949e' }}>{s.title}</p>
-              <ul className="space-y-2">
-                {s.links.map(l => (
-                  <li key={l.label}>
-                    <a href__={l.href}
-                      className="flex items-center gap-2 text-sm transition-colors"
-                      style={{ color: '#8b949e', textDecoration: 'none' }}
-                      onMouseEnter={e => e.currentTarget.style.color = '#f85149'}
-                      onMouseLeave={e => e.currentTarget.style.color = '#8b949e'}
-                    >
-                      {l.icon} {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+    <footer className="bg-[#0d1117] border-t border-[#30363d] pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          
+          <div className="col-span-1 md:col-span-1">
+            <Link to="/" className="inline-block mb-4">
+              <span className="font-black text-2xl tracking-tight">
+                Dev<span className="text-[#f85149]">Bytes</span>
+              </span>
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
+              A space for developers, designers, and tech enthusiasts to learn and grow. Dedicated to sharing knowledge and building better web experiences.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="text-gray-400 hover:text-[#f85149] transition-colors"><Github size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-[#f85149] transition-colors"><Twitter size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-[#f85149] transition-colors"><Linkedin size={20} /></a>
             </div>
-          ))}
+          </div>
+
+          <div>
+            <h4 className="font-bold text-sm uppercase tracking-widest mb-6">Explore</h4>
+            <ul className="space-y-4 text-sm text-gray-400">
+              <li><Link to="/" className="hover:text-white transition-colors">Portfolio</Link></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors">Latest Articles</Link></li>
+              <li><Link to="/#projects" className="hover:text-white transition-colors">Projects</Link></li>
+              <li><Link to="/#about" className="hover:text-white transition-colors">About Me</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-sm uppercase tracking-widest mb-6">Contact</h4>
+            <ul className="space-y-4 text-sm text-gray-400">
+              <li className="flex items-center gap-3">
+                <Mail size={16} className="text-[#f85149]" />
+                <span>hello@devbytes.com</span>
+              </li>
+              <li>
+                <Link to="/#socials" className="inline-block px-6 py-3 bg-[#161b22] border border-[#30363d] rounded-xl font-bold text-white hover:border-[#f85149] transition-all">
+                  Send a Message
+                </Link>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
-        <div className="pt-6 text-center text-xs" style={{ borderTop: '1px solid #21262d', color: '#8b949e' }}>
-          Made with ❤️ in India &nbsp;·&nbsp; DevBytes © {new Date().getFullYear()}
+        <div className="pt-8 border-t border-[#30363d] text-center text-xs text-gray-500">
+          <p>© {new Date().getFullYear()} DevBytes. All rights reserved. Crafted with ❤️ by Devanshu Mohriya.</p>
         </div>
       </div>
     </footer>

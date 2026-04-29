@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, BadgeCheck } from 'lucide-react';
-import { a } from 'framer-motion/client';
 
 const CERTS = [
   { title: 'GeoGebra Training', issuer: 'IIT Bombay', category: 'Technical', image: 'https://media.base44.com/images/public/69bdc87402b020b7249e66f1/e3658b534_1111.jpg' },

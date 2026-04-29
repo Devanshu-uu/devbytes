@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
-import { ArrowLeft, Calendar, Clock, Tag, Share2, Copy, Check } from 'lucide-react';
+import base44 from '@/api/base44Client';
+import { ArrowLeft, Calendar, Clock, Tag, Share2, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import BlogNavbar from '../components/blog/BlogNavbar';
 import BlogFooter from '../components/blog/BlogFooter';
@@ -10,18 +10,21 @@ import BlogFooter from '../components/blog/BlogFooter';
 export default function BlogPostDetail() {
   const { slug } = useParams();
 
-  const { data: posts = [], isLoading } = useQuery({
+  const { data: post = null, isLoading } = useQuery({
     queryKey: ['blogpost', slug],
-    queryFn: () => base44.entities.BlogPost.filter({ slug, published: true }, '-created_date', 1),
+    queryFn: async () => {
+      const all = await base44.entities.BlogPost.filter();
+      return all.find(p => p.slug === slug) || null;
+    },
   });
 
-  const post = posts[0];
-
   const handleShare = () => {
+    if (!post) return;
     if (navigator.share) {
-      navigator.share({ title: post?.title, url: window.location.href });
+      navigator.share({ title: post.title, url: window.location.href });
     } else {
       navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
     }
   };
 
@@ -32,112 +35,93 @@ export default function BlogPostDetail() {
     <div className="min-h-screen" style={{ background: '#0d1117', color: '#e6edf3' }}>
       <BlogNavbar />
 
-      <div className="pt-20 max-w-3xl mx-auto px-4 pb-24">
-
-        {/* Back */}
-        <Link to="/blog" className="inline-flex items-center gap-2 mt-8 mb-8 text-sm transition-colors hover:text-red-400"
+      <article className="pt-28 max-w-4xl mx-auto px-4 pb-24">
+        
+        {/* Breadcrumbs / Back */}
+        <Link to="/blog" className="inline-flex items-center gap-2 mb-10 text-sm font-medium transition-colors hover:text-[#f85149]"
           style={{ color: '#8b949e', textDecoration: 'none' }}>
           <ArrowLeft size={16} /> Back to Blog
         </Link>
 
+        {/* Header Section */}
+        <header className="mb-12">
+          <div className="flex items-center gap-2 mb-6">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#f85149] text-white">
+              {post.category}
+            </span>
+            <div className="h-1 w-1 rounded-full bg-gray-600" />
+            <span className="text-sm text-gray-400 flex items-center gap-1.5">
+              <Clock size={14} /> {post.read_time} min read
+            </span>
+          </div>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.1]" 
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            {post.title}
+          </h1>
+
+          <div className="flex flex-wrap items-center justify-between gap-6 py-6 border-y border-[#30363d]">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-[#161b22] border border-[#30363d] flex items-center justify-center overflow-hidden">
+                <User size={24} className="text-gray-400" />
+              </div>
+              <div>
+                <p className="text-sm font-bold">{post.author}</p>
+                <p className="text-xs text-gray-400 flex items-center gap-1">
+                  <Calendar size={12} /> {new Date(post.created_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </p>
+              </div>
+            </div>
+
+            <button onClick={handleShare}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all hover:bg-[#30363d]"
+              style={{ background: '#161b22', border: '1px solid #30363d' }}>
+              <Share2 size={16} /> Share Article
+            </button>
+          </div>
+        </header>
+
         {/* Cover Image */}
         {post.cover_image && (
-          <div className="w-full rounded-2xl overflow-hidden mb-8" style={{ aspectRatio: '16/7' }}>
-            <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
+          <div className="w-full rounded-3xl overflow-hidden mb-12 shadow-2xl border border-[#30363d]">
+            <img src={post.cover_image} alt={post.title} className="w-full h-auto max-h-[500px] object-cover" />
           </div>
         )}
 
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-black leading-tight mb-4" style={{ color: '#e6edf3' }}>
-          {post.title}
-        </h1>
-
-        {/* Excerpt / Quote */}
+        {/* Excerpt */}
         {post.excerpt && (
-          <blockquote className="italic text-base mb-6 pl-4" style={{
-            borderLeft: '3px solid #f85149',
-            color: '#8b949e',
-          }}>
-            "{post.excerpt}"
-          </blockquote>
+          <div className="mb-12">
+             <p className="text-xl md:text-2xl text-gray-400 italic leading-relaxed border-l-4 border-[#f85149] pl-6 py-2">
+              {post.excerpt}
+            </p>
+          </div>
         )}
 
-        {/* Meta */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-8 pb-6"
-          style={{ borderBottom: '1px solid #21262d' }}>
-          <div className="flex items-center gap-4 text-sm" style={{ color: '#8b949e' }}>
-            <span>By <span style={{ color: '#f85149', fontWeight: 700 }}>{post.author || 'DevBytes'}</span></span>
-            {post.created_date && (
-              <span className="flex items-center gap-1.5">
-                <Calendar size={13} />
-                Updated: {new Date(post.created_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-              </span>
-            )}
-            {post.read_time && (
-              <span className="flex items-center gap-1.5">
-                <Clock size={13} /> {post.read_time} min read
-              </span>
-            )}
-          </div>
-          <button onClick={handleShare}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-105"
-            style={{ background: '#161b22', border: '1px solid #30363d', color: '#e6edf3' }}>
-            <Share2 size={14} /> Share
-          </button>
-        </div>
-
-        {/* Markdown Content */}
-        <div className="blog-content">
+        {/* Main Content */}
+        <div className="blog-content prose prose-invert prose-red max-w-none">
           <ReactMarkdown
             components={{
-              h1: ({ children }) => (
-                <h1 className="text-2xl font-black mt-10 mb-4" style={{ color: '#e6edf3' }}>{children}</h1>
-              ),
-              h2: ({ children }) => (
-                <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#e6edf3' }}>{children}</h2>
-              ),
-              h3: ({ children }) => (
-                <h3 className="text-lg font-semibold mt-6 mb-2" style={{ color: '#e6edf3' }}>{children}</h3>
-              ),
-              p: ({ children }) => (
-                <p className="text-base leading-relaxed mb-4" style={{ color: '#c9d1d9' }}>{children}</p>
-              ),
-              code: ({ inline, children, className }) => {
-                if (inline) {
-                  return (
-                    <code className="px-1.5 py-0.5 rounded text-sm font-mono"
-                      style={{ background: '#161b22', color: '#f85149', border: '1px solid #30363d' }}>
-                      {children}
-                    </code>
-                  );
-                }
-                return <CodeBlock code={String(children).replace(/\n$/, '')} />;
-              },
-              pre: ({ children }) => <>{children}</>,
-              ul: ({ children }) => (
-                <ul className="list-disc list-inside mb-4 space-y-1.5" style={{ color: '#c9d1d9' }}>{children}</ul>
-              ),
-              ol: ({ children }) => (
-                <ol className="list-decimal list-inside mb-4 space-y-1.5" style={{ color: '#c9d1d9' }}>{children}</ol>
-              ),
-              li: ({ children }) => <li className="text-base leading-relaxed">{children}</li>,
-              blockquote: ({ children }) => (
-                <blockquote className="pl-4 italic my-4" style={{ borderLeft: '3px solid #f85149', color: '#8b949e' }}>
-                  {children}
-                </blockquote>
-              ),
-              a: ({ href, children }) => (
-                <a href__={href} target="_blank" rel="noopener noreferrer"
-                  style={{ color: '#58a6ff', textDecoration: 'underline' }}>
-                  {children}
-                </a>
-              ),
-              img: ({ src, alt }) => (
-                <img src={src} alt={alt} className="w-full rounded-xl my-6 border"
-                  style={{ borderColor: '#30363d' }} />
-              ),
-              strong: ({ children }) => <strong style={{ color: '#e6edf3', fontWeight: 700 }}>{children}</strong>,
-              hr: () => <hr className="my-8" style={{ borderColor: '#21262d' }} />,
+              h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-12 mb-6" {...props} />,
+              h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-10 mb-4 border-b border-[#30363d] pb-2" {...props} />,
+              h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-8 mb-4" {...props} />,
+              p: ({node, ...props}) => <p className="text-lg leading-8 text-gray-300 mb-6" {...props} />,
+              ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-300" {...props} />,
+              ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-6 space-y-2 text-gray-300" {...props} />,
+              li: ({node, ...props}) => <li className="text-lg" {...props} />,
+              code: ({node, inline, ...props}) => 
+                inline ? (
+                  <code className="bg-[#161b22] px-1.5 py-0.5 rounded text-[#f85149] text-sm" {...props} />
+                ) : (
+                  <div className="my-8 rounded-2xl overflow-hidden border border-[#30363d]">
+                    <div className="bg-[#161b22] px-4 py-2 text-xs text-gray-400 border-b border-[#30363d] flex justify-between">
+                      <span>Code Snippet</span>
+                    </div>
+                    <pre className="p-6 bg-[#0d1117] overflow-x-auto text-sm leading-relaxed" {...props} />
+                  </div>
+                ),
+              blockquote: ({node, ...props}) => (
+                <blockquote className="border-l-4 border-[#30363d] pl-6 italic text-gray-400 my-8" {...props} />
+              )
             }}
           >
             {post.content}
@@ -146,94 +130,57 @@ export default function BlogPostDetail() {
 
         {/* Tags */}
         {post.tags?.length > 0 && (
-          <div className="mt-12 pt-8" style={{ borderTop: '1px solid #21262d' }}>
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-sm font-semibold mr-2" style={{ color: '#8b949e' }}>Tags</span>
-                {post.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 rounded-full text-xs font-semibold"
-                    style={{ background: '#161b22', border: '1px solid #30363d', color: '#8b949e' }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <button onClick={handleShare}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-105"
-                style={{ background: '#161b22', border: '1px solid #30363d', color: '#e6edf3' }}>
-                <Share2 size={14} /> Share
-              </button>
+          <div className="mt-16 pt-10 border-t border-[#30363d]">
+            <h4 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Related Topics</h4>
+            <div className="flex gap-2 flex-wrap">
+              {post.tags.map(tag => (
+                <span key={tag} className="px-4 py-1.5 rounded-lg text-xs font-medium transition-colors hover:border-[#f85149]"
+                  style={{ background: '#161b22', border: '1px solid #30363d', color: '#8b949e' }}>
+                  #{tag}
+                </span>
+              ))}
             </div>
           </div>
         )}
 
-        {/* Back to Blog */}
-        <div className="mt-12 text-center">
+        {/* Footer Navigation */}
+        <div className="mt-20 flex flex-col items-center">
+          <div className="w-20 h-1 bg-[#30363d] rounded-full mb-8" />
+          <h3 className="text-2xl font-bold mb-6">Enjoyed this article?</h3>
           <Link to="/blog"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:scale-105"
-            style={{ background: '#f85149', color: '#fff', textDecoration: 'none' }}>
-            <ArrowLeft size={16} /> Back to All Articles
+            className="px-8 py-4 rounded-2xl font-bold text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl"
+            style={{ background: '#f85149' }}>
+            Browse More Articles
           </Link>
         </div>
-      </div>
+      </article>
 
       <BlogFooter />
     </div>
   );
 }
 
-function CodeBlock({ code }) {
-  const [copied, setCopied] = useState(false);
-
-  const copy = () => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className="relative my-5 rounded-xl overflow-hidden" style={{ background: '#161b22', border: '1px solid #30363d' }}>
-      <div className="flex items-center justify-between px-4 py-2" style={{ background: '#21262d', borderBottom: '1px solid #30363d' }}>
-        <span className="text-xs font-mono" style={{ color: '#8b949e' }}>Code</span>
-        <button onClick={copy} className="flex items-center gap-1.5 text-xs transition-colors hover:text-white"
-          style={{ color: copied ? '#3fb950' : '#8b949e' }}>
-          {copied ? <Check size={13} /> : <Copy size={13} />}
-          {copied ? 'Copied!' : 'Copy'}
-        </button>
-      </div>
-      <pre className="p-4 overflow-x-auto text-sm font-mono leading-relaxed" style={{ color: '#e6edf3' }}>
-        <code>{code}</code>
-      </pre>
-    </div>
-  );
-}
-
 function LoadingSkeleton() {
   return (
-    <div className="min-h-screen" style={{ background: '#0d1117' }}>
-      <BlogNavbar />
-      <div className="pt-24 max-w-3xl mx-auto px-4 animate-pulse">
-        <div className="h-48 rounded-2xl mb-8" style={{ background: '#161b22' }} />
-        <div className="h-8 rounded mb-4" style={{ background: '#161b22', width: '80%' }} />
-        <div className="h-4 rounded mb-8" style={{ background: '#161b22', width: '60%' }} />
-        <div className="space-y-3">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="h-4 rounded" style={{ background: '#161b22', width: `${80 + Math.random() * 20}%` }} />
-          ))}
-        </div>
-      </div>
+    <div className="min-h-screen flex items-center justify-center flex-col gap-4" style={{ background: '#0d1117' }}>
+      <div className="w-12 h-12 border-4 border-[#30363d] border-t-[#f85149] rounded-full animate-spin" />
+      <p className="text-gray-500 font-medium">Loading article...</p>
     </div>
   );
 }
 
 function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: '#0d1117', color: '#e6edf3' }}>
-      <BlogNavbar />
-      <p className="text-6xl font-black mb-4" style={{ color: '#f85149' }}>404</p>
-      <p className="text-xl mb-6" style={{ color: '#8b949e' }}>Post not found</p>
-      <Link to="/blog" className="px-6 py-3 rounded-xl font-semibold"
-        style={{ background: '#f85149', color: '#fff', textDecoration: 'none' }}>
-        Back to Blog
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center" style={{ background: '#0d1117' }}>
+      <div className="w-24 h-24 bg-[#161b22] rounded-3xl flex items-center justify-center mb-6 border border-[#30363d]">
+        <ArrowLeft size={40} className="text-[#f85149]" />
+      </div>
+      <h1 className="text-4xl font-black mb-4">Article Not Found</h1>
+      <p className="text-gray-400 max-w-md mb-8">
+        The article you're looking for doesn't exist or has been moved to a new location.
+      </p>
+      <Link to="/blog" className="px-8 py-3 bg-[#f85149] text-white rounded-xl font-bold">
+        Back to Blog Home
       </Link>
     </div>
   );
