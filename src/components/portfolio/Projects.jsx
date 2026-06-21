@@ -27,7 +27,7 @@ const PROJECTS = [
     desc: 'Excel-based business dashboard showcasing Amazon sales performance, KPI tracking, trends, and data-driven insights using charts and slicers.',
     tags: ['Excel', 'Dashboard', 'Data Analysis'],
     category: 'Excel',
-    image: '/amazon-dashboard-thumb.jpg',
+    image: '/amazon-sales-dashboard.png',
     download: '/amazon-dashboard.xlsx',
     github: 'https://github.com/Devanshu-uu/Excel-Dashboards',
   },
