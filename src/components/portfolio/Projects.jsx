@@ -1,7 +1,7 @@
 // src/components/portfolio/ProjectsSection.jsx
 
 import React, { useState } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import { Download, Github } from 'lucide-react';
 
 const PROJECTS = [
   {
@@ -11,7 +11,7 @@ const PROJECTS = [
     category: 'Web Dev',
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
     github: 'https://github.com/Devanshu-uu/devbytes',
-    live: 'https://www.devbytes.in/',
+    download: 'https://www.devbytes.in/',
   },
   {
     title: 'Frontend Development',
@@ -20,34 +20,16 @@ const PROJECTS = [
     category: 'Web Dev',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
     github: '#',
-    live: '#',
+    download: '#',
   },
   {
-    title: 'Data Analysis Dashboard',
-    desc: 'Dashboard-style project for analyzing datasets and extracting trends using Python, Pandas, and data visualization tools.',
-    tags: ['Python', 'Pandas', 'Matplotlib'],
-    category: 'Data Science',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-    github: '#',
-    live: '#',
-  },
-  {
-    title: 'Sales Trend Insights',
-    desc: 'Sales analysis workflow with report visualization and trend interpretation for real-world style data understanding.',
-    tags: ['Python', 'Power BI', 'SQL'],
-    category: 'Data Science',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
-    github: '#',
-    live: '#',
-  },
-  {
-    title: 'ML Classifier',
-    desc: 'Machine learning classification model with data preprocessing and evaluation flow using Scikit-learn and NumPy.',
-    tags: ['Python', 'Scikit-learn', 'NumPy'],
-    category: 'AI/ML',
-    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80',
-    github: '#',
-    live: '#',
+    title: 'Amazon Dashboard',
+    desc: 'Excel-based business dashboard showcasing Amazon sales performance, KPI tracking, trends, and data-driven insights using charts and slicers.',
+    tags: ['Excel', 'Dashboard', 'Data Analysis'],
+    category: 'Excel',
+    image: '/amazon-sales-dashboard.png',
+    download: '/amazon-dashboard.xlsx',
+    github: 'https://github.com/Devanshu-uu/Excel-Dashboards',
   },
   {
     title: 'AI Chatbot',
@@ -56,11 +38,20 @@ const PROJECTS = [
     category: 'AI/ML',
     image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80',
     github: '#',
-    live: '#',
+    download: '#',
+  },
+  {
+    title: 'ML Classifier',
+    desc: 'Machine learning classification model with data preprocessing and evaluation flow using Scikit-learn and NumPy.',
+    tags: ['Python', 'Scikit-learn', 'NumPy'],
+    category: 'AI/ML',
+    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80',
+    github: '#',
+    download: '#',
   },
 ];
 
-const FILTERS = ['Web Dev', 'Data Science', 'AI/ML'];
+const FILTERS = ['Web Dev', 'Excel', 'AI/ML'];
 
 export default function ProjectsSection() {
   const [active, setActive] = useState('Web Dev');
@@ -105,8 +96,7 @@ export default function ProjectsSection() {
             lineHeight: 1.7,
           }}
         >
-          Real and practice-based projects across web development, data science,
-          and AI/ML — focused on clean UI, practical problem solving, and skill growth.
+          Excel-based analytics and business intelligence projects with interactive dashboards and data insights.
         </p>
 
         <div
@@ -222,15 +212,15 @@ export default function ProjectsSection() {
                       fontSize: 14,
                       color: '#d4d4d4',
                       textDecoration: 'none',
+                      fontWeight: 600,
                     }}
                   >
                     <Github size={15} /> Code
                   </a>
 
                   <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={p.download}
+                    download
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -238,9 +228,10 @@ export default function ProjectsSection() {
                       fontSize: 14,
                       color: '#ef4444',
                       textDecoration: 'none',
+                      fontWeight: 600,
                     }}
                   >
-                    <ExternalLink size={15} /> Live
+                    <Download size={15} /> Download
                   </a>
                 </div>
               </div>

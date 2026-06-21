@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="dashboardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#dashboardGrad)"/>
+  <text x="960" y="100" font-size="48" font-weight="bold" fill="white" text-anchor="middle">Amazon Sales Dashboard 2024</text>
+  
+  <!-- KPI Cards -->
+  <rect x="50" y="150" width="200" height="140" fill="#0a4a7d" rx="10" stroke="#00a8e8" stroke-width="2"/>
+  <text x="150" y="185" font-size="14" fill="#00a8e8" text-anchor="middle" font-weight="bold">Total Sales</text>
+  <text x="150" y="225" font-size="36" fill="white" text-anchor="middle" font-weight="bold">76505</text>
+  
+  <rect x="280" y="150" width="200" height="140" fill="#1a5f3f" rx="10" stroke="#00d084" stroke-width="2"/>
+  <text x="380" y="185" font-size="14" fill="#00d084" text-anchor="middle" font-weight="bold">Total Units</text>
+  <text x="380" y="225" font-size="36" fill="white" text-anchor="middle" font-weight="bold">2501</text>
+  
+  <!-- Charts Area -->
+  <rect x="50" y="320" width="900" height="400" fill="rgba(255,255,255,0.05)" rx="10" stroke="#00a8e8" stroke-width="1"/>
+  <text x="500" y="350" font-size="18" fill="#00a8e8" text-anchor="middle" font-weight="bold">Sales Trends & Analytics</text>
+  
+  <!-- Map Visualization -->
+  <rect x="1000" y="320" width="850" height="400" fill="rgba(255,255,255,0.05)" rx="10" stroke="#00a8e8" stroke-width="1"/>
+  <text x="1425" y="350" font-size="18" fill="#00a8e8" text-anchor="middle" font-weight="bold">City-wise Sales Distribution</text>
+  
+  <!-- Legend -->
+  <text x="50" y="770" font-size="14" fill="#a0a0a0">📊 Interactive Dashboard with filters, slicers, and real-time analytics</text>
+  <text x="50" y="810" font-size="14" fill="#a0a0a0">📈 Excel-based visualization of Amazon sales performance metrics</text>
+</svg>
