@@ -5,7 +5,7 @@
 <!-- ========================================================= -->
 
 <p align="center">
-  <img src="https://media.giphy.com/media/L8K62iTDkzGX6/giphy.gif" width="100%" alt="Modern Web Development Banner">
+  <img src="https://github.com/Devanshu-uu/devbytes/blob/main/Public/webdevc.gif" width="80%" alt="Modern Web Development Banner">
 </p>
 
 <h1 align="center">DevBytes</h1>
@@ -54,7 +54,7 @@ As I continue learning, this portfolio grows with me. New projects, improvements
 
 <div align="center">
 
-<a href="https://devbytes.in" target="_blank" rel="noopener noreferrer" target="_blank">
+<a href="https://devbytes.in" target="_blank" rel="noopener noreferrer" >
   <img 
     src="https://github.com/Devanshu-uu/devbytes/blob/main/Public/Screenshot%202026-07-01%20212241.png?raw=true"
     alt="DevBytes Homepage"
