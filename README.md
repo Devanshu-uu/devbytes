@@ -54,7 +54,7 @@ As I continue learning, this portfolio grows with me. New projects, improvements
 
 <div align="center">
 
-<a href="https://devbytes.in" target="_blank" rel="noopener noreferrer">
+<a href="https://devbytes.in" target="_blank" rel="noopener noreferrer" target="_blank">
   <img 
     src="https://github.com/Devanshu-uu/devbytes/blob/main/Public/Screenshot%202026-07-01%20212241.png?raw=true"
     alt="DevBytes Homepage"
