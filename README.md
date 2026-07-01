@@ -1,19 +1,19 @@
 # Devanshu's Portfolio 🚀
 
-Welcome to the repository for my personal portfolio website! This is a clean, modern, and responsive single-page application (SPA) designed with an E-learning/professional aesthetic to showcase my skills, projects, education, and blog posts.
+Welcome to the repository for my personal portfolio website! This is a clean, modern, and responsive single-page application (SPA) designed with a professional, blog-style aesthetic to showcase my skills, projects, education, and blog posts.
 
 ---
 
 ## 🌐 Live Preview
 
-You can interact with the live website directly below, or open it in a new tab at [devbytes.in](https://devbytes.in).
+Click the preview banner below to visit the live website at [devbytes.in](https://devbytes.in)!
 
 <br />
 
 <div align="center">
-  <iframe src="https://devbytes.in" width="100%" height="500px" style="border: 2px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
-    <p>Your browser does not support iframes. Please visit <a href="https://devbytes.in">devbytes.in</a> manually.</p>
-  </iframe>
+  <a href="https://devbytes.in" target="_blank">
+    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80" alt="Devanshu Portfolio Preview" width="100%" style="border-radius: 8px; border: 1px solid #e2e8f0;" />
+  </a>
 </div>
 
 <br />
@@ -38,29 +38,35 @@ You can interact with the live website directly below, or open it in a new tab a
 
 ## 📂 Project Structure
 
-Here is a quick look at how the code is organized:
+Here is a quick look at how the project code is organized:
 
 ```text
 ├── public/
 ├── src/
 │   ├── api/            # API integration modules
-│   ├── components/     # Reusable UI components (Navbar, Footer, Hero, etc.)
+│   ├── components/     # Reusable UI layout blocks
 │   │   ├── About.jsx
 │   │   ├── BlogSection.jsx
 │   │   ├── Certificates.jsx
 │   │   ├── Contact.jsx
 │   │   ├── Education.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Hero.jsx
 │   │   ├── MusicPlayer.jsx
+│   │   ├── Navbar.jsx
 │   │   ├── Projects.jsx
-│   │   └── Skills.jsx
+│   │   ├── Skills.jsx
+│   │   └── Socials.jsx
 │   ├── hooks/          # Custom React hooks
-│   ├── lib/            # Library setups (e.g., shadcn/ui or utility functions)
-│   ├── pages/          # Main application page wrappers
-│   ├── utils/          # Helper functions and constants
-│   ├── App.jsx         # Core layout and routing
+│   ├── lib/            # External library configurations
+│   ├── pages/          # Main application page structures
+│   ├── utils/          # Helper functions and utilities
+│   ├── App.jsx         # Core layout and routing setup
 │   ├── main.jsx        # App entry point
+│   ├── PageNotFound.jsx
 │   └── index.css       # Global styles & Tailwind directives
 ├── index.html
 ├── tailwind.config.js
+├── postcss.config.js
 ├── vercel.json         # Vercel deployment configurations
 └── package.json
