@@ -62,17 +62,8 @@ As I continue learning, this portfolio grows with me. New projects, improvements
   />
 </a>
 
-</div><div align="center">
-
-<a href="https://devbytes.in" target="_blank" rel="noopener noreferrer">
-  <img 
-    src="https://github.com/Devanshu-uu/devbytes/blob/main/Public/Screenshot%202026-07-01%20212241.png?raw=true"
-    alt="DevBytes Homepage"
-    width="90%"
-  />
-</a>
-
 </div>
+
 
 <p align="center">
 <i>The homepage of my personal portfolio showcasing projects, skills, blogs, and creative web experiences.</i>
